@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
     include_once("Controller/domain.php");
     include_once("Controller/cart.php");
 
@@ -21,3 +22,13 @@
     } else {
         home();
     }
+=======
+    include_once ("Controller/controller.php");
+
+    switch ($_GET){
+        case "index.php":
+            home();
+        default :
+            home();
+    }
+>>>>>>> e889cb993df8e4dc7e6a78aadd2f38ccd7e33c52
