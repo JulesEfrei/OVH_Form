@@ -48,7 +48,6 @@
             return $res;
 
         }
-<<<<<<< HEAD
     }
 
     class DeleteReq {
@@ -68,6 +67,4 @@
             return $res;
 
         }
-=======
->>>>>>> e889cb993df8e4dc7e6a78aadd2f38ccd7e33c52
     }

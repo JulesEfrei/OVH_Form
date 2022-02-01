@@ -6,7 +6,7 @@ function getCartId() {
 
     $array = [
         "description"=>"Ask new cartId",
-        "expire"=>"2022-02-01T17:00:00+00:00", // REMOVE THIS LINE FOR PRODUCTION
+        "expire"=>"2022-02-01T16:00:00+00:00", // REMOVE THIS LINE FOR PRODUCTION
         "ovhSubsidiary"=>"FR"
     ];
 
