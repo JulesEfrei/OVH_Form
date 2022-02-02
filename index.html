@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <title>Réservez votre nom de domaine</title>
+</head>
+<body class="bg-light smooth-scroll">
+
+
+
+<!-- Header -->
+<header class="vw-100" id="header" style="height: calc(100vh - (2rem + 72px));">
+
+    <!--  Navigation Bar  -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top py-3">
+        <div class="container-fluid">
+            <!-- Navbar Toggle -->
+            <a class="navbar-brand" href="#header">EpixelicDomain</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse container-fluid mx-0 justify-content-end" id="navbarNav" style="flex-grow: 0!important;">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#domain_section">Nom de domaine</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#form">Formulaire d'inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white btn-sm align-start" href="#">Commander</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--  Hero Banner   -->
+    <div class="w-100 h-75 d-flex flex-column align-items-center p-4" style="margin-top: calc(2rem + 72px);">
+        <div class="d-flex flex-column align-items-center mb-5">
+            <h1 class="fs-1 text-center">Trouver votre nom de domaine</h1>
+            <h4 class="fs-5 mt-3 text-center">
+                Envie d'un nouveau site web et vous voulez réserver rapidement un nom de domaine.
+                <br>
+                Verifiez la disponibilité d'un nom de domaine et réserver-le en quelques cliques.
+            </h4>
+        </div>
+        <a href="#domain_section" class="btn btn-outline-primary">Trouver votre nom de domaine</a>
+        <div class="bg-danger w-75 h-100 mt-5"></div>
+    </div>
+
+</header>
+
+
+
+<!-- OVH section -->
+<section class="vw-100 h-auto d-flex flex-column justify-content-center align-items-center bg-white p-4">
+
+    <h1 class="fs-2 text-center">Nom de domaine héberger par <a href="https://www.ovhcloud.com/" class="text-dark">OVHcloud</a></h1>
+    <h4 class="fs-6 text-center my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi dolorem eum exercitationem fugit hic id nobis nulla saepe!</h4>
+    <img src="Logo_OVH.png" alt="Logo OVHcloud" class="img-fluid w-25">
+
+</section>
+
+
+
+<!-- Domain section -->
+<section id="domain_section" class="bg-light w-100 h-auto container p-4 my-4">
+
+    <div class="row">
+
+        <h3 class="fs-3 mb-md-0 mb-4 col-md-4 col-lg-6 align-self-center">Trouver votre nom de domaine</h3>
+
+        <!-- Form domain -->
+        <div class="d-flex flex-column align-items-start needs-validation col-md-8 col-lg-6">
+            <label for="domain">Entrez un nom de domaine</label>
+            <div class="input-group mt-3 hover-shadow">
+                <input type="text" name="domain" id="domain" placeholder="monsite.com" required class="form-control">
+                <button type="submit" class="btn btn-outline-primary" onclick="addToCart()">Ajouter au pannier</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Form section -->
+<section id="form" class="bg-white w-100 p-4 d-flex flex-column">
+
+    <h1 class="mt-3 fs-3">Créer un compte OVHcloud</h1>
+    <h3 class="mt-3 fs-5">Sélectionner votre situation et remplissez le formulaire</h3>
+
+    <!-- Form Container -->
+    <div class="w-75 mt-5 align-self-center bg-light p-3">
+
+        <!-- Form controller -->
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-customer-tab" data-bs-toggle="tab" data-bs-target="#nav-customer" type="button" role="tab" aria-controls="nav-customer" aria-selected="true">Particulier</button>
+            <button class="nav-link" id="nav-business-tab" data-bs-toggle="tab" data-bs-target="#nav-business" type="button" role="tab" aria-controls="nav-business" aria-selected="true">Entreprise</button>
+        </div>
+
+        <!-- Form content -->
+        <div class="tab-content mt-3 px-3">
+
+            <!-- Content customer form -->
+            <div class="tab-pane fade show active" id="nav-customer" role="tabpanel" aria-labelledby="nav-customer-tab">
+                <h5 class="fs-5">Formulaire pour les particuliers</h5>
+                <!-- Form -->
+                <form action="" method="post" class="w-100 container mt-4">
+
+                    <!-- Personnal data -->
+                    <p class="fs-5 row">Informations perosonnelles</p>
+                    <div class="mb-3 row">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="text" name="name" id="name" placeholder="Prénom" required>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control" type="text" name="last_name" id="last_name" placeholder="Nom" required>
+                        </div>
+                    </div>
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control mb-4" type="tel" name="phone" id="phone" placeholder="Numéro de téléphone (facultatif)">
+                    </div>
+
+                    <!-- Account -->
+                    <p class="fs-5 row">Informations de compte</p>
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control mb-3" type="text" name="account" id="account" value="Particulier" disabled>
+                    </div>
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control" type="email" name="email" id="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="row mb-4 mt-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="password" name="password" id="password" placeholder="mot de passe" required>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Confirmez votre mot de passe" required>
+                        </div>
+                    </div>
+
+                    <!-- Adress -->
+                    <p class="fs-5 row">Adresse</p>
+                    <div class="row mt-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="text" name="adress" id="adress" placeholder="Adresse" required>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control" type="text" name="city" id="city" placeholder="Ville" required>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn btn-outline-primary mt-4 row align-self-center">Valider l'inscription</a>
+
+                </form>
+            </div>
+
+            <!-- Content business form -->
+            <div class="tab-pane fade" id="nav-business" role="tabpanel" aria-labelledby="nav-business-tab">
+                <h5 class="fs-5">Formulaire pour les entreprise ou association</h5>
+                <!-- Form -->
+                <form action="" method="post" class="w-100 container mt-4">
+
+                    <!-- Personnal data -->
+                    <p class="fs-5 row">Informations perosonnelles</p>
+                    <div class="row mb-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="text" name="name" id="nameB" placeholder="Prénom" required>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control" type="text" name="last_name" id="last_nameB" placeholder="Nom" required>
+                        </div>
+                    </div>
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control mb-4" type="tel" name="phone" id="phoneB" placeholder="Numéro de téléphone (facultatif)">
+                    </div>
+
+                    <!-- Account -->
+                    <p class="fs-5 row">Informations de compte</p>
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control" type="email" name="email" id="emailB" placeholder="E-mail" required>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="password" name="password" id="passwordB" placeholder="mot de passe" required>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control" type="password" name="confirm_password" id="confirm_passwordB" placeholder="Confirmez votre mot de passe" required>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <select class="form-select" name="type" required>
+                                <option selected value="1">Type de compte</option>
+                                <option value="2">Entreprise</option>
+                                <option value="3">Association</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control" type="text" name="organisation" id="organisation" placeholder="Organisation" required>
+                        </div>
+                    </div>
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control mb-4" type="text" name="tva" id="tva" placeholder="Numéro de TVA (facultatif)">
+                    </div>
+
+                    <!-- Adress -->
+                    <p class="fs-5 row">Adresse</p>
+                    <div class="row mt-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="text" name="adress" id="adressB" placeholder="Adresse" required>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control" type="text" name="city" id="cityB" placeholder="Ville" required>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn btn-outline-primary mt-4 row align-self-center">Valider l'inscription</a>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Order section -->
+<section class="w-100 bg-light d-flex flex-column align-items-center p-4 mt-4">
+    <h3 class="text-center">Vous avez selectionner le nom de domaine de votre choix et remplis le formulaire ?</h3>
+    <h5 class="text-center my-3">Lancer la disponibilité des nom de domaine et votre commande</h5>
+    <a href="#" class="btn btn-primary btn-lg">Valider votre commande</a>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="w-100 bg-secondary p-4">
+    <h5 class="text-center">Made by EPIXELIC</h5>
+</footer>
+
+
+
+<!-- Link Bootstrap js-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!-- Link personal Js file -->
+<script src="js/app.js"></script>
+<script src="js/front.js"></script>
+
+</body>
+</html>
