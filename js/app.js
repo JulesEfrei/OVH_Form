@@ -129,8 +129,15 @@ function order() {
         console.log("Order invalid. Please enter domain name and complete the form")
     } else {
         buildPopup("Commande envoyé !", false)
-        console.log(`Domain send : ${domain}`)
-        console.log(`User send : ${user}`)
+
+        //AJAX
+        $.ajax({
+            url: 'index.php',
+            data: {user: JSON.stringify(user), domain: JSON.stringify(domain)},
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8", // $_POST
+            type: 'POST',
+        });
+
     }
 
 }
