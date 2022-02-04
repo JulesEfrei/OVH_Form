@@ -7,7 +7,9 @@
       <change beforePath="$PROJECT_DIR$/../Cedille API/Console-version/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cedille API/Console-version/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cedille API/Web-version/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Cedille API/Web-version/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +80,7 @@
       <workItem from="1643634457224" duration="393000" />
       <workItem from="1643799260169" duration="20342000" />
       <workItem from="1643907790808" duration="518000" />
-      <workItem from="1643965311447" duration="6456000" />
+      <workItem from="1643965311447" duration="15150000" />
     </task>
     <servers />
   </component>

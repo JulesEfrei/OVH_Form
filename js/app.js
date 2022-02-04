@@ -70,15 +70,23 @@ function getFormData(id) {
         console.log("Invalid form")
     } else {
 
-        let selector = "#" + id + " input";
+        let selector = "#" + id + " input[data-obj='1']";
+        let adresseSelector = "#" + id + " input[data-obj='2']";
 
         //Get all input from form
 
         let input = document.querySelectorAll(selector);
+        let adressInput = document.querySelectorAll(adresseSelector);
+
+
+
 
         //Get data
 
         user = Array.from(input).reduce((acc, input) => ({...acc, [input.name]: input.value}), {})
+        user['address'] = Array.from(adressInput).reduce((acc, input) => ({...acc, [input.name]: input.value}), {})
+
+        user["legalForm"] = "individual"
 
         //If business form => Get the select tag
 
@@ -86,38 +94,20 @@ function getFormData(id) {
 
             let select = document.getElementById("select").value;
 
-            user["type"] = select
+            user["legalForm"] = select
+
+            if(user.legalForm == "1") {
+                buildPopup("Type de compte incorrect", true)
+                console.log("Type of account invalid")
+            }
 
         }
 
-        verifyData(id);
 
     }
 
 }
 
-
-//Verify data user form
-
-function verifyData(form) {
-
-    if (form == "business-form") {
-        if(user.type == "1") {
-            buildPopup("Type de compte incorrect", true)
-            console.log("Type of account invalid")
-            return false
-        }
-    }
-
-    if(user.password == user.confirm_password) {
-        buildPopup("Le formulaire à bien été enregistré", false)
-        console.log("Form send !")
-    } else {
-        buildPopup("Les mots de passe ne correspondent pas", true)
-        console.log("Passwords do not match.")
-    }
-
-}
 
 
 //Order function
@@ -136,6 +126,11 @@ function order() {
             data: {user: JSON.stringify(user), domain: JSON.stringify(domain)},
             contentType: "application/x-www-form-urlencoded; charset=UTF-8", // $_POST
             type: 'POST',
+            success: function(data) {
+                console.log(data)
+
+                domain = []
+            }
         });
 
     }

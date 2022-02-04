@@ -89,11 +89,54 @@ foreach ($domain as $elm) {
 
 }
 
+
+
 echo("\n");
-print_r($unavailableDomain);
-print_r($domain);
+if(!empty($unavailableDomain)) {
+    print_r($unavailableDomain);
+    die();
+} else {
+    print_r($domain);
+}
+
 
 
 // Refreshing Cart
 $cart = $ovh->get("/order/cart/".$cartId);
 print_r($cart);
+
+
+
+// Create owner Contact
+
+echo("\nCreating contact");
+
+$contact = $ovh->post("/me/contact", $user);
+
+echo($contact["id"]);
+
+
+
+
+// Assign contact to each cart item (domain)
+
+foreach($cart['items'] as $item) {
+    echo "\nAssign owner contact to cart item $item";
+    $domain = $ovh->post("/order/cart/" . $cartId . '/item/' . $item . '/configuration', [
+        "label" => "OWNER_CONTACT",
+        "value" => '/me/contact/' . $contact['id']
+    ]);
+}
+
+
+
+// Bind a cart to your account
+echo "\nBind cart to account";
+$ovh->post("/order/cart/".$cartId."/assign");
+
+// Let's checkout
+echo "\nCheckout";
+$salesorder = $ovh->post("/order/cart/".$cartId."/checkout");
+var_dump($salesorder);
+
+
