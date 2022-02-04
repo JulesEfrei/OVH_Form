@@ -122,7 +122,7 @@ function order() {
 
         //AJAX
         $.ajax({
-            url: 'index.php',
+            url: './php/index.php',
             data: {user: JSON.stringify(user), domain: JSON.stringify(domain)},
             contentType: "application/x-www-form-urlencoded; charset=UTF-8", // $_POST
             type: 'POST',
