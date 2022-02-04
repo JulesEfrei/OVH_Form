@@ -103,7 +103,7 @@ function getFormData(id) {
 
         }
 
-
+        buildPopup("Le formulaire à bien été envoyé", false)
     }
 
 }
@@ -128,6 +128,10 @@ function order() {
             type: 'POST',
             success: function(data) {
                 console.log(data)
+
+                if(data[data.length - 1] == ">") {
+                    buildPopup("Nom de domaine indisponible. Veillez selectionner un autre nom de domaine", true)
+                }
 
                 domain = []
             }

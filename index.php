@@ -94,6 +94,7 @@ foreach ($domain as $elm) {
 echo("\n");
 if(!empty($unavailableDomain)) {
     print_r($unavailableDomain);
+    echo("Error >");
     die();
 } else {
     print_r($domain);
@@ -138,5 +139,3 @@ $ovh->post("/order/cart/".$cartId."/assign");
 echo "\nCheckout";
 $salesorder = $ovh->post("/order/cart/".$cartId."/checkout");
 var_dump($salesorder);
-
-
