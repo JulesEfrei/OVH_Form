@@ -42,7 +42,7 @@ echo("\nCreating cart");
 
 $cart = $ovh->post('/order/cart', [
     "description" => "",
-    "expriration" => "2022-02-04T15:00:00+00:00", //REMOVE THIS LINE FOR PRODUCTION
+    //"expriration" => "2022-02-04T15:00:00+00:00", REMOVE THIS LINE FOR PRODUCTION
     "ovhSubsidiary" => "FR"
 ]);
 
@@ -73,6 +73,7 @@ foreach ($domain as $elm) {
 
         //Add domain to unvailable
         array_push($unavailableDomain, $elm);
+
         //Remove domain to global array
         $key = array_search($elm, $domain);
         unset($domain[$key]);
@@ -80,6 +81,7 @@ foreach ($domain as $elm) {
     } elseif($dom[0]['orderable'] == 1 || str_contains($dom[0]['offerId'], "create")) {
 
         echo(" available");
+
         //Add domain to the cart
         $addDomain = $ovh->post("/order/cart/".$cartId."/domain", [
             "domain"=>$elm
@@ -90,14 +92,19 @@ foreach ($domain as $elm) {
 }
 
 
-
 echo("\n");
+
+// If domain is not available
 if(!empty($unavailableDomain)) {
+
     print_r($unavailableDomain);
     echo("Error >");
     die();
+
 } else {
+
     print_r($domain);
+
 }
 
 
