@@ -6,10 +6,10 @@ use \Ovh\Api;
 
 
 // Setup the API
-$applicationKey = "amH0epug2GXOG4VR";
-$applicationSecret = "VxJiAp0eHbOrA6kyUWF01eXvsepLJGxA";
+$applicationKey = "PdVgdWqQLmxxVqHq";
+$applicationSecret = "nDQXB2tYVSNtCIJtljqNu8U8jQqfJXjG";
 $endpoint = "ovh-eu";
-$consumer_key = "iLL3MhlxOYgbR8ywvWgaIFpbtN53Pfak";
+$consumer_key = "lDISvBfSDDvhPyrD30G10Zrd8BPj9mDV";
 
 
 $ovh = new Api( $applicationKey,
@@ -139,10 +139,10 @@ foreach($cart['items'] as $item) {
 
 
 // Bind a cart to your account
-echo "\nBind cart to account";
-$ovh->post("/order/cart/".$cartId."/assign");
-
-// Let's checkout
-echo "\nCheckout";
-$salesorder = $ovh->post("/order/cart/".$cartId."/checkout");
-var_dump($salesorder);
+//echo "\nBind cart to account";
+//$ovh->post("/order/cart/".$cartId."/assign");
+//
+//// Let's checkout
+//echo "\nCheckout";
+//$salesorder = $ovh->post("/order/cart/".$cartId."/checkout");
+//var_dump($salesorder);
