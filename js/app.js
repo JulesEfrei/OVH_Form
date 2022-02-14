@@ -4,6 +4,7 @@ var domain = []; //Get all the domain name wanted
 var user = {}; //Get all information about the client
 
 
+
 // Add domain to global array
 
 function addToCart() {
@@ -40,6 +41,8 @@ function addToCart() {
 
 }
 
+
+
 // Test If string is domain
 
 function isDomain(string) {
@@ -57,6 +60,7 @@ function isDomain(string) {
     }
 
 }
+
 
 
 // If form already send
@@ -80,6 +84,7 @@ function ifData(id) {
 }
 
 
+
 // Get data from form
 
 function getFormData(id) {
@@ -92,7 +97,7 @@ function getFormData(id) {
 
     } else {
 
-        //Get input selector for each form
+        //Get input selector
 
         let selector = "#" + id + " input[data-obj='1']";
         let adresseSelector = "#" + id + " input[data-obj='2']";
@@ -110,9 +115,8 @@ function getFormData(id) {
         user['address'] = Array.from(adressInput).reduce((acc, input) => ({...acc, [input.name]: input.value}), {})
 
 
-        //Set type of account
 
-        //Get select input
+        //Get Type of account
         if(id == "business-form") {
 
             let select = document.getElementById("select").value;
@@ -132,9 +136,49 @@ function getFormData(id) {
 
         }
 
-        buildPopup("Le formulaire à bien été envoyé", false)
+        if(select(id) == true) {
+            buildPopup("Le formulaire à bien été envoyé", false)
+        }
+
 
     }
+
+}
+
+
+
+//Get Select input
+
+function select(id) {
+
+    if(id == "business-form") {
+
+        var language = document.getElementById("selectLangB")
+        var country = document.getElementById("selectCountryB")
+
+    } else {
+
+        var language = document.getElementById("selectLang")
+        var country = document.getElementById("selectCountry")
+
+    }
+
+
+    if(language.value == 1 || country.value == 1) {
+
+        buildPopup("Langue ou pays incorrect", true)
+        console.log("Type of Language/Country invalid")
+
+        return false
+
+    } else {
+
+        user["language"] = language.value
+        user["address"]["country"] = country.value
+
+        return true
+    }
+
 
 }
 

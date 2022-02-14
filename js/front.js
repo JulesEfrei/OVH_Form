@@ -36,7 +36,8 @@ function scrollAnimation() {
         },
         x: -300,
         opacity: 0,
-        duration: .3
+        stagger: .1,
+        duration: .5
     })
     gsap.from(".gsap3", {
         scrollTrigger: {
@@ -47,7 +48,7 @@ function scrollAnimation() {
         x: 300,
         opacity: 0,
         stagger: .1,
-        duration: .3
+        duration: .5
     })
 
 }
