@@ -6,7 +6,7 @@ window.onload = function () {
 
     tl.from(".navbar", {duration: .5, y: -100, opacity: 0})
         .from(".gsap1", {duration: .5, y: 100, opacity: 0, stagger: .15})
-        .from(".bg-danger", {duration: 1.5, ease: "power1.in", opacity: 0}, "<")
+        .from("#img", {duration: 1.5, ease: "power1.in", opacity: 0}, "<")
 
 }
 
