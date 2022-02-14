@@ -114,27 +114,26 @@ $cart = $ovh->get("/order/cart/".$cartId);
 print_r($cart);
 
 
-print_r($user);
 // Create owner Contact
 
-//echo("\nCreating contact");
-//
-//$contact = $ovh->post("/me/contact", $user);
-//
-//echo($contact["id"]);
+echo("\nCreating contact");
+
+$contact = $ovh->post("/me/contact", $user);
+
+echo($contact["id"]);
 
 
 
 
 // Assign contact to each cart item (domain)
 
-//foreach($cart['items'] as $item) {
-//    echo "\nAssign owner contact to cart item $item";
-//    $domain = $ovh->post("/order/cart/" . $cartId . '/item/' . $item . '/configuration', [
-//        "label" => "OWNER_CONTACT",
-//        "value" => '/me/contact/' . $contact['id']
-//    ]);
-//}
+foreach($cart['items'] as $item) {
+    echo "\nAssign owner contact to cart item $item";
+    $domain = $ovh->post("/order/cart/" . $cartId . '/item/' . $item . '/configuration', [
+        "label" => "OWNER_CONTACT",
+        "value" => '/me/contact/' . $contact['id']
+    ]);
+}
 
 
 
