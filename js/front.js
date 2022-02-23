@@ -69,4 +69,10 @@ function addElement(domainName) {
 
     selector.after(title);
 
+    document.getElementById(domainName).classList.replace("border-2", "border-1")
+    document.getElementById(domainName).firstElementChild.classList.add("fs-5")
+
+    console.log(domainName)
+    title.setAttribute('onclick',`deleteDomain('${domainName}')`)
+
 }

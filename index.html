@@ -17,9 +17,9 @@
 
 
 <!-- Domain section -->
-<section id="domain_section" class="bg-light w-100 vh-100 container">
+<section id="domain_section" class="bg-light w-100 vh-100 container d-flex justify-content-around align-items-center flex-column">
 
-    <div class="row">
+    <div class="row w-100">
 
         <h3 class="fs-3 mb-md-0 mb-4 col-md-4 col-lg-6 align-self-center domain-title">Entrez un nom de domaine</h3>
 
@@ -34,16 +34,14 @@
 
     </div>
 
-    <div class="row">
-        <ul id="domain-list">
-            <li id="domain-item">
-                <h3>List des noms de domaine</h3>
-                <a>Remove</a>
-            </li>
-            <li>
-                <h3>...</h3>
-            </li>
-        </ul>
+    <div class="row w-75 bg-white p-4 container">
+            <div id="domain-item" class="row w-100 d-flex justify-content-between mb-4 pb-3 border-bottom border-dark border-2">
+                <h3 class="col-6">Liste des noms de domaine</h3>
+                <a href="#" class="col-6  align-self-center btn btn-outline-primary w-auto">Remove</a>
+            </div>
+            <div class="row w-100 d-flex justify-content-between">
+                <h3 class="col-6">...</h3>
+            </div>
     </div>
 
 </section>
@@ -53,8 +51,7 @@
 <!-- Form section -->
 <section id="form" class="bg-white w-100 p-4 d-flex flex-column">
 
-    <h1 class="mt-3 fs-3">Créer un compte OVHcloud</h1>
-    <h3 class="mt-3 fs-5">Sélectionner votre situation et remplissez le formulaire</h3>
+    <h1 class="mt-3 fs-3">Sélectionner votre situation et remplissez le formulaire</h1>
 
     <!-- Form Container -->
     <div class="w-75 mt-5 align-self-center bg-light p-3">
@@ -74,8 +71,6 @@
                 <!-- Form -->
                 <form class="w-100 container mt-4" id="customer-form">
 
-                    <!-- Personnal data -->
-                    <p class="fs-5 row">Informations perosonnelles</p>
                     <div class="mb-3 row">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <input class="form-control" type="text" name="firstName" id="name" placeholder="Prénom" required="required" data-obj="1">
@@ -84,50 +79,44 @@
                             <input class="form-control" type="text" name="lastName" id="last_name" placeholder="Nom" required="required" data-obj="1">
                         </div>
                     </div>
-                    <div class="row col-md-6 ps-0">
-                        <select class="form-select mb-4" name="language" required id="selectLang" data-obj="1">
-                            <option selected value="1">Langue</option>
-                            <option value="fr_FR">Français</option>
-                            <option value="en_US">Anglais (US)</option>
-                        </select>
-                    </div>
-                    <div class="row col-md-6 ps-0">
-                        <input class="form-control mb-4" type="tel" name="phone" id="phone" placeholder="Numéro de téléphone" required data-obj="1">
-                    </div>
-
-                    <!-- Account -->
-                    <p class="fs-5 row">Informations de compte</p>
-                    <div class="row col-md-6 ps-0">
-                        <input class="form-control mb-3" type="text" name="legalForm" id="legalForm" value="Particulier" disabled data-obj="1">
-                    </div>
-                    <div class="row col-md-6 ps-0 mb-4">
+                    <div class="row col-md-6 ps-0 mb-3">
                         <input class="form-control" type="email" name="email" id="email" placeholder="E-mail" required="required" data-obj="1">
                     </div>
 
-                    <!-- Adress -->
-                    <p class="fs-5 row">Adresse</p>
-                    <div class="row mt-3">
+                    <div class="mb-3 row">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
-                            <input class="form-control" type="text" name="line1" id="adress" placeholder="Adresse" required="required" data-obj="2">
+                            <select class="form-select mb-4" name="language" required id="selectLang" data-obj="1">
+                                <option selected value="1">Langue</option>
+                                <option value="fr_FR">Français</option>
+                                <option value="en_US">Anglais (US)</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control mb-4" type="tel" name="phone" id="phone" placeholder="Numéro de téléphone" required data-obj="1">
+                        </div>
+                    </div>
+
+                    <!-- Adress -->
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control" type="text" name="line1" id="adress" placeholder="Adresse" required="required" data-obj="2">
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="text" name="zip" id="zip" placeholder="Code Postal" required="required" data-obj="2">
                         </div>
                         <div class="col-xl-3 col-md-6 px-0">
                             <input class="form-control" type="text" name="city" id="city" placeholder="Ville" required="required" data-obj="2">
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
-                            <input class="form-control" type="text" name="zip" id="zip" placeholder="Code Postal" required="required" data-obj="2">
-                        </div>
-                        <div class="col-xl-3 col-md-6 px-0">
-                            <select class="form-select" name="country" required id="selectCountry" data-obj="2">
-                                <option selected value="1">Pays</option>
-                                <option value="FR">France</option>
-                                <option value="US">États-Unis</option>
-                            </select>
-                        </div>
+                    <div class="row col-md-6 ps-0">
+                        <select class="form-select" name="country" required id="selectCountry" data-obj="2">
+                            <option selected value="1">Pays</option>
+                            <option value="FR">France</option>
+                            <option value="US">États-Unis</option>
+                        </select>
                     </div>
 
-                    <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('customer-form')">Valider l'inscription</button>
+                    <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('customer-form')">Valider les informations saisies</button>
 
                 </form>
             </div>
@@ -139,7 +128,6 @@
                 <form class="w-100 container mt-4" id="business-form">
 
                     <!-- Personnal data -->
-                    <p class="fs-5 row">Informations perosonnelles</p>
                     <div class="row mb-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <input class="form-control" type="text" name="firstName" id="nameB" placeholder="Prénom" required="required" data-obj="1">
@@ -160,7 +148,6 @@
                     </div>
 
                     <!-- Account -->
-                    <p class="fs-5 row">Informations de compte</p>
                     <div class="row col-md-6 ps-0">
                         <input class="form-control" type="email" name="email" id="emailB" placeholder="E-mail" required="required" data-obj="1">
                     </div>
@@ -181,7 +168,6 @@
                     </div>
 
                     <!-- Adress -->
-                    <p class="fs-5 row">Adresse</p>
                     <div class="row mt-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <input class="form-control" type="text" name="line1" id="adressB" placeholder="Adresse" required="required" data-obj="2">
@@ -203,7 +189,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('business-form')">Valider l'inscription</button>
+                    <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('business-form')">Valider les informations saisies</button>
 
                 </form>
             </div>

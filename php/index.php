@@ -24,7 +24,7 @@ if(!isset($_SESSION['cartId'])) {
 
     $cart = $ovh->post('/order/cart', [
         "description" => "",
-        "expriration" => "2022-02-23T15:00:00+00:00", // REMOVE THIS LINE FOR PRODUCTION
+        "expriration" => "2022-02-22T15:00:00+00:00", // REMOVE THIS LINE FOR PRODUCTION
         "ovhSubsidiary" => "FR"
     ]);
 
@@ -135,6 +135,28 @@ function addDomain($domain) {
     $cart = $ovh->get("/order/cart/".$cartId);
     print_r($cart);
     echo "ERROR > 0";
+
+}
+
+
+
+function removeDomain($domain) {
+    global $cartId, $ovh;
+
+    //Get Updated Cart
+    $items = $ovh->get("/order/cart/".$cartId."/item");
+
+    //Each item of the cart
+    foreach ($items as $elm) {
+
+        $name = $ovh->get("/order/cart/".$cartId."/item/".$elm)['settings']['domain'];
+
+        if($name == $domain) {
+            $sup = $ovh->delete("/order/cart/".$cartId."/item/".$elm);
+            echo "Domain $domain removed";
+        }
+
+    }
 
 }
 

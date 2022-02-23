@@ -63,6 +63,7 @@ function addToCart() {
             console.log(domain)
             console.log("Domain updated")
             ajaxSetup({action: "addDomain", domain: domain[domain.length - 1]})
+            form.value = ""
 
         }
     }
@@ -84,6 +85,25 @@ function isDomain(string) {
     } else {
 
         return 0
+
+    }
+
+}
+
+function deleteDomain(domainName) {
+
+    //Ask confirmation
+    if(confirm(`Attention, vous allez supprimer ${domainName} de votre pannier`)){
+
+        //Ajax request
+        ajaxSetup({action: "removeDomain", domain: domainName})
+
+        //Remove domain in front & in global domain array
+        document.getElementById(domainName).remove()
+        let index = domain.findIndex(elm => elm === domainName)
+        domain.splice(index, 1)
+
+        console.log("Domain array updated : " + domain)
 
     }
 
