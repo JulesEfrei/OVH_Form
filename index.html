@@ -16,72 +16,12 @@
 <body class="bg-light smooth-scroll">
 
 
-
-<!-- Header -->
-<header class="vw-100" id="header" style="height: calc(100vh - (2rem + 72px));">
-
-    <!--  Navigation Bar  -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light position-fixed fixed-top py-3">
-        <div class="container-fluid">
-            <!-- Navbar Toggle -->
-            <a class="navbar-brand" href="#header">EpixelicDomain</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar content -->
-            <div class="collapse navbar-collapse container-fluid mx-0 justify-content-end" id="navbarNav" style="flex-grow: 0!important;">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#domain_section">Nom de domaine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#form">Formulaire d'inscription</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white btn-sm align-start" href="#" onclick="order()">Commander</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!--  Hero Banner   -->
-    <div class="w-100 h-75 d-flex flex-column align-items-center p-4" style="margin-top: calc(2rem + 72px);">
-        <div class="d-flex flex-column align-items-center mb-5">
-            <h1 class="fs-1 text-center gsap1">Trouver votre nom de domaine</h1>
-            <h4 class="fs-5 mt-3 text-center gsap1">
-                Envie d'un nouveau site web et vous voulez réserver rapidement un nom de domaine.
-                <br>
-                Vérifiez la disponibilité d'un nom de domaine et réservez-le en quelques cliques.
-            </h4>
-        </div>
-        <a href="#domain_section" class="btn btn-outline-primary gsap1">Trouver votre nom de domaine</a>
-        <div class="w-100 mt-5 d-flex justify-content-center" id="img">
-            <img src="./assets/url.png" alt="Nom de domaine" class="w-50 me-5">
-        </div>
-    </div>
-
-</header>
-
-
-
-<!-- OVH section -->
-<section class="vw-100 h-auto d-flex flex-column justify-content-center align-items-center bg-white p-4" id="ovh">
-
-    <h1 class="fs-2 text-center gsap2">Nom de domaine par <a href="https://www.ovhcloud.com/" class="text-dark">OVHcloud</a></h1>
-    <h4 class="fs-6 text-center my-4 gsap2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi dolorem eum exercitationem fugit hic id nobis nulla saepe!</h4>
-    <img src="assets/Logo_OVH.png" alt="Logo OVHcloud" class="img-fluid w-25 gsap2">
-
-</section>
-
-
-
 <!-- Domain section -->
-<section id="domain_section" class="bg-light w-100 h-auto container p-4 my-4">
+<section id="domain_section" class="bg-light w-100 vh-100 container">
 
     <div class="row">
 
-        <h3 class="fs-3 mb-md-0 mb-4 col-md-4 col-lg-6 align-self-center domain-title">Trouver votre nom de domaine</h3>
+        <h3 class="fs-3 mb-md-0 mb-4 col-md-4 col-lg-6 align-self-center domain-title">Entrez un nom de domaine</h3>
 
         <!-- Form domain -->
         <div class="d-flex flex-column align-items-start needs-validation col-md-8 col-lg-6">
@@ -92,6 +32,18 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="row">
+        <ul id="domain-list">
+            <li id="domain-item">
+                <h3>List des noms de domaine</h3>
+                <a>Remove</a>
+            </li>
+            <li>
+                <h3>...</h3>
+            </li>
+        </ul>
     </div>
 
 </section>
@@ -261,22 +213,6 @@
     </div>
 
 </section>
-
-
-
-<!-- Order section -->
-<section class="w-100 bg-light d-flex flex-column align-items-center p-4 mt-4">
-    <h3 class="text-center">Vous avez selectionné le nom de domaine de votre choix et rempli le formulaire ?</h3>
-    <h5 class="text-center my-3">Lancer la disponibilité des nom de domaine et votre commande</h5>
-    <a href="#" class="btn btn-primary btn-lg" onclick="order()">Valider votre commande</a>
-</section>
-
-
-
-<!-- Footer -->
-<footer class="w-100 bg-secondary p-4">
-    <h5 class="text-center">Made by EPIXELIC</h5>
-</footer>
 
 
 

@@ -3,7 +3,38 @@
 var domain = []; //Get all the domain name wanted
 var user = {}; //Get all information about the client
 
+//AJAX setup function
+function ajaxSetup(content) {
 
+    //AJAX
+    $.ajax({
+        url: './php/index.php',
+        data: content,
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        type: 'POST',
+        success: function(data) {
+            console.log(data)
+
+            // If domain is not available
+            if(data[data.length - 1] == "1") {
+
+                buildPopup("Nom de domaine indisponible. Veillez selectionner un autre nom de domaine", true)
+
+                //Reset domain variable
+                domain.pop(domain[domain.length - 1])
+
+            } else if(data[data.length - 1] == "0") {
+
+                buildPopup("Nom de domaine ajouté au pannier", false)
+
+                addElement(domain[domain.length - 1])
+
+            }
+
+        }
+    });
+
+}
 
 // Add domain to global array
 
@@ -16,7 +47,7 @@ function addToCart() {
     if(form.value.length == 0) {
 
         buildPopup("Veillez entrer un nom de domaine", true);
-        console.log("Empty form")
+        console.log("Empty input")
 
     } else {
 
@@ -28,13 +59,10 @@ function addToCart() {
 
         } else {
 
-            buildPopup("Nom de domaine ajouter au pannier", false);
             domain.push(form.value);
-            //Reset input
-            form.value = "";
-
-            console.log("Domain array updated !");
-            console.log(domain);
+            console.log(domain)
+            console.log("Domain updated")
+            ajaxSetup({action: "addDomain", domain: domain[domain.length - 1]})
 
         }
     }
@@ -60,7 +88,6 @@ function isDomain(string) {
     }
 
 }
-
 
 
 // If form already send

@@ -1,62 +1,3 @@
-// Loadding animation
-
-window.onload = function () {
-
-    let tl = gsap.timeline();
-
-    tl.from(".navbar", {duration: .5, y: -100, opacity: 0})
-        .from(".gsap1", {duration: .5, y: 100, opacity: 0, stagger: .15})
-        .from("#img", {duration: 1.5, ease: "power1.in", opacity: 0}, "<")
-
-}
-
-// Scroll animation
-
-function scrollAnimation() {
-
-    //OVH section
-    gsap.from(".gsap2", {
-        scrollTrigger: {
-            trigger: "#ovh",
-            start: "top 95%",
-            toggleActions: "restart pause pause"
-        },
-        y: 50,
-        opacity: 0,
-        stagger: .1,
-        duration: .3
-    })
-
-    //Domain section
-    gsap.from(".domain-title", {
-        scrollTrigger: {
-            trigger: "#domain_section",
-            start: "top 95%",
-            toggleActions: "restart pause pause"
-        },
-        x: -300,
-        opacity: 0,
-        stagger: .1,
-        duration: .5
-    })
-    gsap.from(".gsap3", {
-        scrollTrigger: {
-            trigger: "#domain_section",
-            start: "top 95%",
-            toggleActions: "restart pause pause"
-        },
-        x: 300,
-        opacity: 0,
-        stagger: .1,
-        duration: .5
-    })
-
-}
-
-scrollAnimation()
-
-
-
 // Build popup function (Error & Success popup)
 
 function buildPopup(elm, is_error) {
@@ -115,5 +56,17 @@ function popupAnimation() {
         })
     }, 4400)
 
+
+}
+
+function addElement(domainName) {
+
+    let selector = document.getElementById("domain-item");
+
+    let title = selector.cloneNode(true)
+    title.id = domainName
+    title.firstElementChild.innerHTML = domainName
+
+    selector.after(title);
 
 }
