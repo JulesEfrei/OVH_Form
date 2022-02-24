@@ -67,6 +67,9 @@ if(isset($_POST['action'])) {
         case "updateDomain":
             updateDomain();
             break;
+        case "getInfo":
+            getInfo();
+            break;
         default:
 //            echo "ERROR -> Aucune action selectionner";
     }
@@ -170,10 +173,31 @@ function createContact() {
 
     $contact = $ovh->post("/me/contact", $user);
 
-    $contactId = $contact['id'];
-
+    $_SESSION['contactId'] = $contact['id'];
 }
 
+
+
+//Get informations
+function getInfo() {
+    global $cartId;
+
+    $data = "";
+
+    if(isset($cartId)){
+        $data = $data.$cartId.",";
+    } else {
+        $data = $data."Aucun,";
+    }
+
+    if(isset($_SESSION['contactId'])){
+        $data = $data.$_SESSION['contactId'].",";
+    } else {
+        $data = $data."Aucun,";
+    }
+
+    echo ($data."3");
+}
 
 
 

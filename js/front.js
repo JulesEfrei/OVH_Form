@@ -112,3 +112,21 @@ function addModalCore() {
     }
 
 }
+
+
+
+function addDevModalCore(cartId, contactId) {
+
+    let selector = document.getElementById("devModal-body")
+    while (selector.firstChild) { selector.removeChild(selector.firstChild); }
+
+    let cart = document.createElement("li")
+    let contact = document.createElement("li")
+
+    cart.innerHTML = "Numéro de pannier : " + cartId
+    contact.innerHTML = "Numéro de contact : " + contactId
+
+    selector.appendChild(cart)
+    selector.appendChild(contact)
+
+}

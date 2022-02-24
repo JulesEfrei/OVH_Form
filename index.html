@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 
-    <title>Réservez votre nom de domaine</title>
+    <title>EpixelicDomain</title>
 </head>
 <body class="bg-light smooth-scroll">
 
@@ -246,6 +246,28 @@
     </div>
 
 </section>
+
+
+
+<!-- Dev option -->
+<div class="position-fixed" style="bottom: 20px; right: 20px;">
+    <a href="#" class="btn fs-5" data-bs-toggle="modal" data-bs-target="#devModal" onclick="ajaxSetup({action:'getInfo'})"><i class="fas fa-terminal"></i></a>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="devModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Mode développeur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body-container">
+                <p>Informations importantes :</p>
+                <ul id="devModal-body"></ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

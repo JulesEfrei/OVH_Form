@@ -31,7 +31,10 @@ function ajaxSetup(content) {
                     list.forEach(elm => {
                         addElement(elm)
                     })
-
+                case "3":
+                    let infoList = data.split(",")
+                    infoList.pop()
+                    addDevModalCore(infoList[0], infoList[1])
             }
 
         }
