@@ -72,7 +72,43 @@ function addElement(domainName) {
     document.getElementById(domainName).classList.replace("border-2", "border-1")
     document.getElementById(domainName).firstElementChild.classList.add("fs-5")
 
-    console.log(domainName)
     title.setAttribute('onclick',`deleteDomain('${domainName}')`)
+
+}
+
+function addModalCore() {
+
+    if (domain.length == 0) {
+
+        if(!document.getElementById("anything")) {
+
+            let rm = document.getElementById("modal-body")
+            while (rm.firstChild) { rm.removeChild(rm.firstChild); }
+
+            let selector = document.getElementById("modal-body-container")
+
+            let elm = document.createElement("p")
+            elm.id = "anything"
+            elm.innerHTML = "Aucun nom de domaine ajouté au pannier"
+
+            selector.appendChild(elm)
+        }
+
+    } else {
+
+        let selector = document.getElementById("modal-body")
+
+        while (selector.firstChild) { selector.removeChild(selector.firstChild); }
+        if(document.getElementById("anything")) {document.getElementById("anything").remove()}
+
+
+        domain.forEach(domain => {
+            let elm = document.createElement("li")
+            elm.innerHTML = domain
+
+            selector.appendChild(elm)
+        })
+
+    }
 
 }

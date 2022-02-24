@@ -4,23 +4,23 @@ session_start();
 require '../vendor/autoload.php';
 use \Ovh\Api;
 
-    // Setup the API
-    $applicationKey = "PdVgdWqQLmxxVqHq";
-    $applicationSecret = "nDQXB2tYVSNtCIJtljqNu8U8jQqfJXjG";
-    $endpoint = "ovh-eu";
-    $consumer_key = "lDISvBfSDDvhPyrD30G10Zrd8BPj9mDV";
 
-    $ovh = new Api( $applicationKey,
-        $applicationSecret,
-        $endpoint,
-        $consumer_key
-    );
 
+// Setup the API
+
+$applicationKey = "PdVgdWqQLmxxVqHq";
+$applicationSecret = "nDQXB2tYVSNtCIJtljqNu8U8jQqfJXjG";
+$endpoint = "ovh-eu";
+$consumer_key = "lDISvBfSDDvhPyrD30G10Zrd8BPj9mDV";
+
+$ovh = new Api( $applicationKey, $applicationSecret, $endpoint, $consumer_key);
+
+
+
+//If cart doesn't exist
 if(!isset($_SESSION['cartId'])) {
 
     //Creating cart
-
-    echo "Creating cart...";
 
     $cart = $ovh->post('/order/cart', [
         "description" => "",
@@ -28,12 +28,9 @@ if(!isset($_SESSION['cartId'])) {
         "ovhSubsidiary" => "FR"
     ]);
 
+    //Add cart to the session
     $_SESSION['cartId'] = $cart['cartId'];
 
-    echo "\nCart number : $cartId";
-
-    echo "\nCréation du pannier et de l'instance OVH\n";
-    echo $_SESSION['cartId'];
 }
 
 // Initialize variables
@@ -46,46 +43,43 @@ if(isset($_POST['user'])) {
 } elseif(isset($_POST['domain'])) {
 
     $domain = $_POST['domain'];
-    echo $domain;
 
 }
 
+
+
+//Function router
 if(isset($_POST['action'])) {
 
     switch ($_POST['action']) {
         case "addDomain":
-            echo "\naddDomain function";
             addDomain($domain);
             break;
         case "removeDomain":
-            echo "\nremoveDomain function";
             removeDomain($domain);
             break;
         case "contact":
-            echo "\nCreate contact function";
             createContact($user);
             break;
         case "validation":
-            echo "\nValidation function";
             validation();
             break;
+        case "updateDomain":
+            updateDomain();
+            break;
         default:
-            echo "ERROR -> Aucune action selectionner";
+//            echo "ERROR -> Aucune action selectionner";
     }
 
 }
 
 
+
+//Ask if a domain is available
 function addDomain($domain) {
     global $ovh, $cartId;
 
-    // Domain orderable
-
-    echo ("\nTest if domain is available");
-
     $unavailableDomain = false;
-
-    echo("\nDomaine : $domain");
 
     //Request
 
@@ -96,14 +90,10 @@ function addDomain($domain) {
 
     if($dom[0]['orderable'] == 0 || str_contains($dom[0]['offerId'], "transfer")) {
 
-        echo (" unavailable");
-
-        //Add domain to unvailable
+        //Set domain to unvalaible
         $unavailableDomain = true;
 
     } elseif($dom[0]['orderable'] == 1 || str_contains($dom[0]['offerId'], "create")) {
-
-        echo(" available");
 
         //Add domain to the cart
         $addDomain = $ovh->post("/order/cart/".$cartId."/domain", [
@@ -112,33 +102,23 @@ function addDomain($domain) {
 
     }
 
-
-    echo("\n");
-
     // If domain is not available
     if($unavailableDomain == true) {
 
-        print_r($unavailableDomain);
-        echo "ERROR > 1";
+        echo "Response Code > 1";
         die();
-
-    } else {
-
-        print_r($domain);
 
     }
 
-
-
     // Refreshing Cart
     $cart = $ovh->get("/order/cart/".$cartId);
-    print_r($cart);
-    echo "ERROR > 0";
+    echo "Response Code > 0";
 
 }
 
 
 
+//Remove domain to cart
 function removeDomain($domain) {
     global $cartId, $ovh;
 
@@ -150,9 +130,9 @@ function removeDomain($domain) {
 
         $name = $ovh->get("/order/cart/".$cartId."/item/".$elm)['settings']['domain'];
 
+        //If elm name is domain we want to remove
         if($name == $domain) {
-            $sup = $ovh->delete("/order/cart/".$cartId."/item/".$elm);
-            echo "Domain $domain removed";
+            $rm = $ovh->delete("/order/cart/".$cartId."/item/".$elm);
         }
 
     }
@@ -160,15 +140,37 @@ function removeDomain($domain) {
 }
 
 
+
+//Return domain list in cart
+function updateDomain() {
+    global $cartId, $ovh;
+
+    $list = "";
+
+    //Get Updated Cart
+    $items = $ovh->get("/order/cart/".$cartId."/item");
+
+    //Each item of the cart
+    foreach ($items as $elm) {
+
+        $name = $ovh->get("/order/cart/" . $cartId . "/item/" . $elm)['settings']['domain'];
+
+        $list = $list . $name . ",";
+
+    }
+
+    echo($list."2");
+}
+
+
+
 // Create owner Contact
 function createContact() {
     global $ovh, $user;
 
-    echo("\nCreating contact");
-
     $contact = $ovh->post("/me/contact", $user);
 
-    echo($contact["id"]);
+    $contactId = $contact['id'];
 
 }
 
@@ -177,6 +179,9 @@ function createContact() {
 
 // Assign contact to each cart item (domain)
 
+function validation() {
+
+    echo "Les noms de domaine ont été réservé";
 //foreach($cart['items'] as $item) {
 //    echo "\nAssign owner contact to cart item $item";
 //    $domain = $ovh->post("/order/cart/" . $cartId . '/item/' . $item . '/configuration', [
@@ -184,6 +189,8 @@ function createContact() {
 //        "value" => '/me/contact/' . $contact['id']
 //    ]);
 //}
+
+}
 
 
 

@@ -21,7 +21,8 @@
 
     <div class="row w-100">
 
-        <h3 class="fs-3 mb-md-0 mb-4 col-md-4 col-lg-6 align-self-center domain-title">Entrez un nom de domaine</h3>
+        <!-- Title -->
+        <h3 class="fs-3 mb-md-0 mb-4 col-md-4 col-lg-6 align-self-center domain-title">Étape 1 : <br><br> Trouver un nom de domaine</h3>
 
         <!-- Form domain -->
         <div class="d-flex flex-column align-items-start needs-validation col-md-8 col-lg-6">
@@ -34,14 +35,19 @@
 
     </div>
 
+    <!-- Domain list -->
     <div class="row w-75 bg-white p-4 container">
+
+            <!-- Item -->
             <div id="domain-item" class="row w-100 d-flex justify-content-between mb-4 pb-3 border-bottom border-dark border-2">
                 <h3 class="col-6">Liste des noms de domaine</h3>
                 <a href="#" class="col-6  align-self-center btn btn-outline-primary w-auto">Remove</a>
             </div>
+
             <div class="row w-100 d-flex justify-content-between">
                 <h3 class="col-6">...</h3>
             </div>
+
     </div>
 
 </section>
@@ -49,9 +55,9 @@
 
 
 <!-- Form section -->
-<section id="form" class="bg-white w-100 p-4 d-flex flex-column">
+<section id="form" class="bg-white w-100 vh-100 p-4 d-flex flex-column">
 
-    <h1 class="mt-3 fs-3">Sélectionner votre situation et remplissez le formulaire</h1>
+    <h1 class="mt-3 fs-3">Étape 2 : <br><br> Sélectionner votre situation et remplissez le formulaire</h1>
 
     <!-- Form Container -->
     <div class="w-75 mt-5 align-self-center bg-light p-3">
@@ -71,6 +77,7 @@
                 <!-- Form -->
                 <form class="w-100 container mt-4" id="customer-form">
 
+                    <!-- Name LastName -->
                     <div class="mb-3 row">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <input class="form-control" type="text" name="firstName" id="name" placeholder="Prénom" required="required" data-obj="1">
@@ -79,10 +86,13 @@
                             <input class="form-control" type="text" name="lastName" id="last_name" placeholder="Nom" required="required" data-obj="1">
                         </div>
                     </div>
+
+                    <!-- Email -->
                     <div class="row col-md-6 ps-0 mb-3">
                         <input class="form-control" type="email" name="email" id="email" placeholder="E-mail" required="required" data-obj="1">
                     </div>
 
+                    <!-- Language Phone -->
                     <div class="mb-3 row">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <select class="form-select mb-4" name="language" required id="selectLang" data-obj="1">
@@ -96,9 +106,12 @@
                         </div>
                     </div>
 
+                    <!-- Adress -->
                     <div class="row col-md-6 ps-0">
                         <input class="form-control" type="text" name="line1" id="adress" placeholder="Adresse" required="required" data-obj="2">
                     </div>
+
+                    <!-- Zip City -->
                     <div class="row my-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <input class="form-control" type="text" name="zip" id="zip" placeholder="Code Postal" required="required" data-obj="2">
@@ -107,6 +120,8 @@
                             <input class="form-control" type="text" name="city" id="city" placeholder="Ville" required="required" data-obj="2">
                         </div>
                     </div>
+
+                    <!-- Country -->
                     <div class="row col-md-6 ps-0">
                         <select class="form-select" name="country" required id="selectCountry" data-obj="2">
                             <option selected value="1">Pays</option>
@@ -115,6 +130,7 @@
                         </select>
                     </div>
 
+                    <!-- Submit -->
                     <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('customer-form')">Valider les informations saisies</button>
 
                 </form>
@@ -126,7 +142,7 @@
                 <!-- Form -->
                 <form class="w-100 container mt-4" id="business-form">
 
-                    <!-- Personnal data -->
+                    <!-- Name LastName -->
                     <div class="row mb-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <input class="form-control" type="text" name="firstName" id="nameB" placeholder="Prénom" required="required" data-obj="1">
@@ -135,10 +151,13 @@
                             <input class="form-control" type="text" name="lastName" id="last_nameB" placeholder="Nom" required="required" data-obj="1">
                         </div>
                     </div>
+
+                    <!-- Email -->
                     <div class="row col-md-6 ps-0">
                         <input class="form-control" type="email" name="email" id="emailB" placeholder="E-mail" required="required" data-obj="1">
                     </div>
 
+                    <!-- Language Phone -->
                     <div class="row my-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <select class="form-select mb-4" name="language" required id="selectLangB" data-obj="1">
@@ -152,7 +171,7 @@
                         </div>
                     </div>
 
-                    <!-- Account -->
+                    <!-- LegalForm OrganisationName -->
                     <div class="row my-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <select class="form-select" name="legalForm" required id="select">
@@ -170,6 +189,8 @@
                     <div class="row col-md-6 ps-0">
                         <input class="form-control" type="text" name="line1" id="adressB" placeholder="Adresse" required="required" data-obj="2">
                     </div>
+
+                    <!-- Zip City -->
                     <div class="row my-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <input class="form-control" type="text" name="zip" id="zipB" placeholder="Code Postal" required="required" data-obj="2">
@@ -178,6 +199,8 @@
                             <input class="form-control" type="text" name="city" id="cityB" placeholder="Ville" required="required" data-obj="2">
                         </div>
                     </div>
+
+                    <!-- Country -->
                     <div class="row col-md-6 ps-0">
                         <select class="form-select" name="country" required id="selectCountryB" data-obj="2">
                             <option selected value="1">Pays</option>
@@ -186,6 +209,7 @@
                         </select>
                     </div>
 
+                    <!-- Submit -->
                     <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('business-form')">Valider les informations saisies</button>
 
                 </form>
@@ -193,6 +217,32 @@
 
         </div>
 
+    </div>
+
+    <!-- Validation container -->
+    <div class="align-self-center mt-4 p-4 d-flex flex-column align-items-center">
+        <h3>Étape 3 : Vérifier et valider vos informations</h3>
+        <button type="button" class="btn btn-primary mt-4" onclick="addModalCore()" data-bs-toggle="modal" data-bs-target="#Modal">Vérifications et validation</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Vérification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body-container">
+                    <p>Vous êtes sur le point de réserver les noms de domaines suivants :</p>
+                    <ul id="modal-body"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" onclick="order()">Confirmer la réservation</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </section>

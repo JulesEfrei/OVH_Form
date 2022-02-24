@@ -13,21 +13,24 @@ function ajaxSetup(content) {
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         type: 'POST',
         success: function(data) {
-            console.log(data)
 
             // If domain is not available
-            if(data[data.length - 1] == "1") {
+            switch (data[data.length - 1]) {
+                case "1":
+                    buildPopup("Nom de domaine indisponible. Veillez selectionner un autre nom de domaine", true)
+                    //Reset domain variable
+                    domain.pop(domain[domain.length - 1])
+                    break;
+                case "0":
+                    buildPopup("Nom de domaine ajouté au pannier", false)
+                    addElement(domain[domain.length - 1])
+                case "2":
+                    let list = data.split(",")
+                    list.pop()
 
-                buildPopup("Nom de domaine indisponible. Veillez selectionner un autre nom de domaine", true)
-
-                //Reset domain variable
-                domain.pop(domain[domain.length - 1])
-
-            } else if(data[data.length - 1] == "0") {
-
-                buildPopup("Nom de domaine ajouté au pannier", false)
-
-                addElement(domain[domain.length - 1])
+                    list.forEach(elm => {
+                        addElement(elm)
+                    })
 
             }
 
@@ -35,6 +38,11 @@ function ajaxSetup(content) {
     });
 
 }
+
+window.onload = () => {
+    ajaxSetup({action: "updateDomain"})
+}
+
 
 // Add domain to global array
 
@@ -47,7 +55,6 @@ function addToCart() {
     if(form.value.length == 0) {
 
         buildPopup("Veillez entrer un nom de domaine", true);
-        console.log("Empty input")
 
     } else {
 
@@ -55,13 +62,10 @@ function addToCart() {
         if(isDomain(form.value) == 0) {
 
             buildPopup("Nom de domaine invalide", true);
-            console.log("Invalid domain")
 
         } else {
 
             domain.push(form.value);
-            console.log(domain)
-            console.log("Domain updated")
             ajaxSetup({action: "addDomain", domain: domain[domain.length - 1]})
             form.value = ""
 
@@ -103,8 +107,6 @@ function deleteDomain(domainName) {
         let index = domain.findIndex(elm => elm === domainName)
         domain.splice(index, 1)
 
-        console.log("Domain array updated : " + domain)
-
     }
 
 }
@@ -140,7 +142,6 @@ function getFormData(id) {
     if(document.getElementById(id).checkValidity() == false) {
 
         buildPopup("Veillez remplir le formulaire correctement", true)
-        console.log("Invalid form")
 
     } else {
 
@@ -173,7 +174,6 @@ function getFormData(id) {
             if(user.legalForm == "1") {
 
                 buildPopup("Type de compte incorrect", true)
-                console.log("Type of account invalid")
 
             }
 
@@ -184,9 +184,13 @@ function getFormData(id) {
         }
 
         if(select(id) == true) {
-            buildPopup("Le formulaire à bien été envoyé", false)
 
-            ajaxSetup({action: "contact", user: JSON.stringify(user)})
+            if(confirm("Attention, en validant vous ne pourrez plus modifier vos informations. Êtes-vous sûr de poursuivre l'oppération ?")) {
+
+                buildPopup("Le formulaire à bien été envoyé", false)
+                ajaxSetup({action: "contact", user: JSON.stringify(user)})
+            }
+
         }
 
 
@@ -216,7 +220,6 @@ function select(id) {
     if(language.value == 1 || country.value == 1) {
 
         buildPopup("Langue ou pays incorrect", true)
-        console.log("Type of Language/Country invalid")
 
         return false
 
@@ -237,37 +240,20 @@ function select(id) {
 
 function order() {
 
-    //If not domain or form send error
-    if(domain.length == 0 || Object.keys(user).length == 0) {
+    let verif = true
 
-        buildPopup("Impossible de valider votre commande.\n Veuillez vérifier que vous avez entré un nom de\n domaine valide et remplis le formulaire.", true)
-        console.log("Order invalid. Please enter domain name and complete the form")
+    if(domain.length == 0) {
+        buildPopup("Veillez entrer un ou plusieurs nom de domaine", true)
+        verif = false
+    }
 
-    } else {
+    if(Object.keys(user).length == 0) {
+        buildPopup("Veuillez remplir le formulaire", true)
+        verif = false
+    }
 
-        buildPopup("Commande envoyé !", false)
-
-        //AJAX
-        $.ajax({
-            url: './php/index.php',
-            data: {user: JSON.stringify(user), domain: JSON.stringify(domain)},
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            type: 'POST',
-            success: function(data) {
-                console.log(data)
-
-                // If domain is not available
-                if(data[data.length - 1] == ">") {
-
-                    buildPopup("Nom de domaine indisponible. Veillez selectionner un autre nom de domaine", true)
-
-                    //Reset domain variable
-                    domain = []
-
-                }
-            }
-        });
-
+    if(verif == true) {
+        ajaxSetup({action: "validation"})
     }
 
 }
