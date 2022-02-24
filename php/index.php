@@ -24,7 +24,7 @@ if(!isset($_SESSION['cartId'])) {
 
     $cart = $ovh->post('/order/cart', [
         "description" => "",
-        "expriration" => "2022-02-22T15:00:00+00:00", // REMOVE THIS LINE FOR PRODUCTION
+        "expriration" => "2022-02-23T15:00:00+00:00", // REMOVE THIS LINE FOR PRODUCTION
         "ovhSubsidiary" => "FR"
     ]);
 
@@ -42,7 +42,6 @@ $cartId = $_SESSION['cartId'];
 if(isset($_POST['user'])) {
 
     $user = json_decode($_POST['user'], true);
-    echo $user;
 
 } elseif(isset($_POST['domain'])) {
 
@@ -162,12 +161,16 @@ function removeDomain($domain) {
 
 
 // Create owner Contact
+function createContact() {
+    global $ovh, $user;
 
-//echo("\nCreating contact");
-//
-//$contact = $ovh->post("/me/contact", $user);
-//
-//echo($contact["id"]);
+    echo("\nCreating contact");
+
+    $contact = $ovh->post("/me/contact", $user);
+
+    echo($contact["id"]);
+
+}
 
 
 

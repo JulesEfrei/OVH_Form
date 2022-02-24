@@ -185,6 +185,8 @@ function getFormData(id) {
 
         if(select(id) == true) {
             buildPopup("Le formulaire à bien été envoyé", false)
+
+            ajaxSetup({action: "contact", user: JSON.stringify(user)})
         }
 
 

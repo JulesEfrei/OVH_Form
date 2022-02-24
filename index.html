@@ -96,7 +96,6 @@
                         </div>
                     </div>
 
-                    <!-- Adress -->
                     <div class="row col-md-6 ps-0">
                         <input class="form-control" type="text" name="line1" id="adress" placeholder="Adresse" required="required" data-obj="2">
                     </div>
@@ -137,20 +136,23 @@
                         </div>
                     </div>
                     <div class="row col-md-6 ps-0">
-                        <select class="form-select mb-4" name="language" required id="selectLangB" data-obj="1">
-                            <option selected value="1">Langue</option>
-                            <option value="fr_FR">Français</option>
-                            <option value="en_US">Anglais (US)</option>
-                        </select>
+                        <input class="form-control" type="email" name="email" id="emailB" placeholder="E-mail" required="required" data-obj="1">
                     </div>
-                    <div class="row col-md-6 ps-0">
-                        <input class="form-control mb-4" type="tel" name="phone" id="phoneB" placeholder="Numéro de téléphone" required data-obj="1">
+
+                    <div class="row my-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <select class="form-select mb-4" name="language" required id="selectLangB" data-obj="1">
+                                <option selected value="1">Langue</option>
+                                <option value="fr_FR">Français</option>
+                                <option value="en_US">Anglais (US)</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0">
+                            <input class="form-control mb-4" type="tel" name="phone" id="phoneB" placeholder="Numéro de téléphone" required data-obj="1">
+                        </div>
                     </div>
 
                     <!-- Account -->
-                    <div class="row col-md-6 ps-0">
-                        <input class="form-control" type="email" name="email" id="emailB" placeholder="E-mail" required="required" data-obj="1">
-                    </div>
                     <div class="row my-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
                             <select class="form-select" name="legalForm" required id="select">
@@ -160,33 +162,28 @@
                             </select>
                         </div>
                         <div class="col-xl-3 col-md-6 px-0">
-                            <input class="form-control" type="text" name="organisationType" id="organisationType" placeholder="Type d'organisation" required="required" data-obj="1">
+                            <input class="form-control mb-4" type="text" name="organisationName" id="organisationName" placeholder="Nom de l'organisation" data-obj="1">
                         </div>
-                    </div>
-                    <div class="row col-md-6 ps-0">
-                        <input class="form-control mb-4" type="text" name="organisationName" id="organisationName" placeholder="Nom de l'organisation" data-obj="1">
                     </div>
 
                     <!-- Adress -->
-                    <div class="row mt-3">
+                    <div class="row col-md-6 ps-0">
+                        <input class="form-control" type="text" name="line1" id="adressB" placeholder="Adresse" required="required" data-obj="2">
+                    </div>
+                    <div class="row my-3">
                         <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
-                            <input class="form-control" type="text" name="line1" id="adressB" placeholder="Adresse" required="required" data-obj="2">
+                            <input class="form-control" type="text" name="zip" id="zipB" placeholder="Code Postal" required="required" data-obj="2">
                         </div>
                         <div class="col-xl-3 col-md-6 px-0">
                             <input class="form-control" type="text" name="city" id="cityB" placeholder="Ville" required="required" data-obj="2">
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
-                            <input class="form-control" type="text" name="zip" id="zipB" placeholder="Code Postal" required="required" data-obj="2">
-                        </div>
-                        <div class="col-xl-3 col-md-6 px-0">
-                            <select class="form-select" name="country" required id="selectCountryB" data-obj="2">
-                                <option selected value="1">Pays</option>
-                                <option value="FR">France</option>
-                                <option value="US">États-Unis</option>
-                            </select>
-                        </div>
+                    <div class="row col-md-6 ps-0">
+                        <select class="form-select" name="country" required id="selectCountryB" data-obj="2">
+                            <option selected value="1">Pays</option>
+                            <option value="FR">France</option>
+                            <option value="US">États-Unis</option>
+                        </select>
                     </div>
 
                     <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('business-form')">Valider les informations saisies</button>
