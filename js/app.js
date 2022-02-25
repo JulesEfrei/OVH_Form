@@ -25,6 +25,7 @@ function ajaxSetup(content) {
                 case "0":
                     buildPopup("Nom de domaine disponible.", false)
                     addElement(domain[domain.length - 1], "green")
+                    break;
                 case "2":
                     domain = data.split(",")
                     domain.pop()
@@ -32,10 +33,12 @@ function ajaxSetup(content) {
                     domain.forEach(elm => {
                         addElement(elm, "green")
                     })
+                    break;
                 case "3":
                     let infoList = data.split(",")
                     infoList.pop()
                     addDevModalCore(infoList[0], infoList[1])
+                    break;
             }
 
         }
@@ -85,7 +88,6 @@ function addToCart() {
             domain.push(form.value);
             ajaxSetup({action: "addDomain", domain: domain[domain.length - 1]})
             form.value = ""
-
         }
     }
 
@@ -148,10 +150,8 @@ function deleteDomain(domainName) {
 function witchForm() {
 
     if(document.getElementById("name").value != "" && document.getElementById("last_name").value != "") {
-        addModalCore()
         getFormData("customer-form")
     } else if(document.getElementById("nameB").value != "" && document.getElementById("last_nameB").value != "") {
-        addModalCore()
         getFormData("business-form")
     } else {
         buildPopup("Veuillez remplir le formulaire", true)
@@ -205,7 +205,10 @@ function getFormData(id) {
             if(user.legalForm == "1") {
 
                 buildPopup("Type de compte incorrect", true)
+                emptyForm()
                 disable()
+
+                return "ERROR"
 
             }
 

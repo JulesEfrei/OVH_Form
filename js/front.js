@@ -94,9 +94,9 @@ function addModalCore() {
             let rm = document.getElementById("modal-body")
             while (rm.firstChild) { rm.removeChild(rm.firstChild); }
 
-            let selector = document.getElementById("modal-body-container")
+            let selector = document.getElementById("modal-body")
 
-            let elm = document.createElement("p")
+            let elm = document.createElement("li")
             elm.id = "anything"
             elm.innerHTML = "Aucun nom de domaine enregistré"
 
