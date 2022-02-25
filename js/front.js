@@ -82,6 +82,11 @@ function addElement(domainName, color) {
 
 function addModalCore() {
 
+    for (let i = 1; i < document.getElementById("modal-body-container").children.length; i++) {
+        document.getElementById("modal-body-container").children[i].style.display = "block"
+    }
+
+    //DOMAIN
     if (domain.length == 0) {
 
         if(!document.getElementById("anything")) {
@@ -93,7 +98,7 @@ function addModalCore() {
 
             let elm = document.createElement("p")
             elm.id = "anything"
-            elm.innerHTML = "Aucun nom de domaine ajouté au pannier"
+            elm.innerHTML = "Aucun nom de domaine enregistré"
 
             selector.appendChild(elm)
         }
@@ -101,6 +106,7 @@ function addModalCore() {
     } else {
 
         document.getElementById("lastConfirm").style.display = "block"
+        document.getElementById("modal-body-container").firstElementChild.innerHTML = "Vous êtes sur le point d’enregistrer les nom de domaines suivants :"
 
         let selector = document.getElementById("modal-body")
 
@@ -117,6 +123,56 @@ function addModalCore() {
 
     }
 
+    //USER
+    if (Object.keys(user).length == 0) {
+
+        if(!document.getElementById("anything-user")) {
+
+            let rm = document.getElementById("modal-user")
+            while (rm.firstChild) { rm.removeChild(rm.firstChild); }
+
+            let selector = document.getElementById("modal-body-container")
+
+            let elm = document.createElement("p")
+            elm.id = "anything-user"
+            elm.innerHTML = "Aucun propriétaire déclaré"
+
+            selector.appendChild(elm)
+        }
+
+    } else {
+
+        let selector = document.getElementById("modal-user")
+
+        while (selector.firstChild) { selector.removeChild(selector.firstChild); }
+        if(document.getElementById("anything-user")) {document.getElementById("anything-user").remove()}
+
+
+        Object.keys(user).forEach(field => {
+
+            if(field == "address") {
+
+                Object.keys(user["address"]).forEach(adressField => {
+
+                    let elm = document.createElement("li")
+                    elm.innerHTML = adressField + " : " + user[field][adressField]
+
+                    selector.appendChild(elm)
+
+                })
+
+            } else {
+
+                let elm = document.createElement("li")
+                elm.innerHTML = field + " : " + user[field]
+
+                selector.appendChild(elm)
+
+            }
+        })
+
+    }
+
 }
 
 
@@ -124,6 +180,11 @@ function addModalCore() {
 //Empty form modal
 function emptyForm() {
     document.getElementById("modal-body-container").firstElementChild.innerHTML = "Le formulaire n'a pas été remplis correctement."
+
+    for (let i = 1; i < document.getElementById("modal-body-container").children.length; i++) {
+        document.getElementById("modal-body-container").children[i].style.display = "none"
+    }
+
 }
 
 

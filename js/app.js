@@ -156,6 +156,7 @@ function witchForm() {
     } else {
         buildPopup("Veuillez remplir le formulaire", true)
         emptyForm()
+        disable()
     }
 
 }
@@ -170,7 +171,7 @@ function getFormData(id) {
     if(document.getElementById(id).checkValidity() == false) {
 
         buildPopup("Veillez remplir le formulaire correctement", true)
-        addModalCore()
+        emptyForm()
         disable()
 
     } else {
@@ -219,7 +220,7 @@ function getFormData(id) {
             addModalCore()
 
         } else {
-            console.log(disable)
+            emptyForm()
             disable()
         }
 
