@@ -130,34 +130,34 @@ function deleteDomain(domainName) {
             //Reset sytle of domain container if domain is empty
             if(domain.length == 0){ document.getElementById("domainListContainer").style.display = "none" }
 
+            document.getElementById(domainName).remove()
         }
+
+    } else {
+
+        //Remove domain in front
+        document.getElementById(domainName).remove()
 
     }
 
-    //Remove domain in front
-    document.getElementById(domainName).remove()
 
 }
 
 
 // If form already send
-function ifData(id) {
+function witchForm() {
 
-    //If form has already pass
-    if (Object.keys(user).length != 0) {
-
-        //Ask for remove last form
-        if(confirm("Attention, vous allez écraser le formulaire précédent") == true) {
-
-            getFormData(id)
-
-        }
-
+    if(document.getElementById("name").value != "" && document.getElementById("last_name").value != "") {
+        addModalCore()
+        getFormData("customer-form")
+    } else if(document.getElementById("nameB").value != "" && document.getElementById("last_nameB").value != "") {
+        addModalCore()
+        getFormData("business-form")
     } else {
-
-        getFormData(id)
-
+        buildPopup("Veuillez remplir le formulaire", true)
+        emptyForm()
     }
+
 }
 
 
@@ -170,6 +170,8 @@ function getFormData(id) {
     if(document.getElementById(id).checkValidity() == false) {
 
         buildPopup("Veillez remplir le formulaire correctement", true)
+        addModalCore()
+        disable()
 
     } else {
 
@@ -202,6 +204,7 @@ function getFormData(id) {
             if(user.legalForm == "1") {
 
                 buildPopup("Type de compte incorrect", true)
+                disable()
 
             }
 
@@ -213,12 +216,11 @@ function getFormData(id) {
 
         if(select(id) == true) {
 
-            if(confirm("Attention, en validant vous ne pourrez plus modifier vos informations. Êtes-vous sûr de poursuivre l'oppération ?")) {
+            addModalCore()
 
-                buildPopup("Le formulaire à bien été envoyé", false)
-                ajaxSetup({action: "contact", user: JSON.stringify(user)})
-            }
-
+        } else {
+            console.log(disable)
+            disable()
         }
 
 
@@ -281,7 +283,9 @@ function order() {
     }
 
     if(verif == true) {
+        ajaxSetup({action: "contact", user: JSON.stringify(user)})
         ajaxSetup({action: "validation"})
+        buildPopup("Les informations ont bien été enregistré", false)
     }
 
 }

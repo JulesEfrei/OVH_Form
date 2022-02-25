@@ -100,6 +100,8 @@ function addModalCore() {
 
     } else {
 
+        document.getElementById("lastConfirm").style.display = "block"
+
         let selector = document.getElementById("modal-body")
 
         while (selector.firstChild) { selector.removeChild(selector.firstChild); }
@@ -115,6 +117,20 @@ function addModalCore() {
 
     }
 
+}
+
+
+
+//Empty form modal
+function emptyForm() {
+    document.getElementById("modal-body-container").firstElementChild.innerHTML = "Le formulaire n'a pas été remplis correctement."
+}
+
+
+
+//Disable Send button
+function disable() {
+    document.getElementById("lastConfirm").style.display = "none"
 }
 
 
