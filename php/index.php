@@ -24,7 +24,7 @@ if(!isset($_SESSION['cartId'])) {
 
     $cart = $ovh->post('/order/cart', [
         "description" => "",
-        "expriration" => "2022-02-23T15:00:00+00:00", // REMOVE THIS LINE FOR PRODUCTION
+        //"expriration" => "2022-02-23T15:00:00+00:00", REMOVE THIS LINE FOR PRODUCTION
         "ovhSubsidiary" => "FR"
     ]);
 
