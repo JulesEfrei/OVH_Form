@@ -59,20 +59,24 @@ function popupAnimation() {
 
 }
 
-function addElement(domainName) {
+function addElement(domainName, color) {
 
-    let selector = document.getElementById("domain-item");
+    document.getElementById("domainListContainer").style.display = "block"
+
+    if(color == "green") {
+        var selector = document.getElementById("domain-item-green");
+    } else if(color == "red") {
+        var selector = document.getElementById("domain-item-red");
+    }
 
     let title = selector.cloneNode(true)
     title.id = domainName
-    title.firstElementChild.innerHTML = domainName
+    title.firstElementChild.innerHTML = title.firstElementChild.innerHTML + domainName
 
     selector.after(title);
 
-    document.getElementById(domainName).classList.replace("border-2", "border-1")
-    document.getElementById(domainName).firstElementChild.classList.add("fs-5")
-
     title.setAttribute('onclick',`deleteDomain('${domainName}')`)
+    title.style.display = "flex"
 
 }
 

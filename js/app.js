@@ -17,19 +17,20 @@ function ajaxSetup(content) {
             // If domain is not available
             switch (data[data.length - 1]) {
                 case "1":
-                    buildPopup("Nom de domaine indisponible. Veillez selectionner un autre nom de domaine", true)
+                    buildPopup("Nom de domaine indisponible.", true)
                     //Reset domain variable
+                    addElement(domain[domain.length - 1], "red")
                     domain.pop(domain[domain.length - 1])
                     break;
                 case "0":
-                    buildPopup("Nom de domaine ajouté au pannier", false)
-                    addElement(domain[domain.length - 1])
+                    buildPopup("Nom de domaine disponible.", false)
+                    addElement(domain[domain.length - 1], "green")
                 case "2":
-                    let list = data.split(",")
-                    list.pop()
+                    domain = data.split(",")
+                    domain.pop()
 
-                    list.forEach(elm => {
-                        addElement(elm)
+                    domain.forEach(elm => {
+                        addElement(elm, "green")
                     })
                 case "3":
                     let infoList = data.split(",")
@@ -42,9 +43,22 @@ function ajaxSetup(content) {
 
 }
 
+
+
+//Update domain list onload
 window.onload = () => {
     ajaxSetup({action: "updateDomain"})
 }
+
+
+
+//Press Enter to send domainName
+document.getElementById("domain").addEventListener("keyup", (e) => {
+    if(document.getElementById("domain").value != "" && e.code == "Enter") {
+        addToCart()
+    }
+})
+
 
 
 // Add domain to global array
@@ -99,18 +113,29 @@ function isDomain(string) {
 
 function deleteDomain(domainName) {
 
-    //Ask confirmation
-    if(confirm(`Attention, vous allez supprimer ${domainName} de votre pannier`)){
+    let index = domain.findIndex(elm => elm === domainName)
 
-        //Ajax request
-        ajaxSetup({action: "removeDomain", domain: domainName})
+    //If domainName is in domain array (If not, it's already not inside the cart)
+    if(index != -1) {
 
-        //Remove domain in front & in global domain array
-        document.getElementById(domainName).remove()
-        let index = domain.findIndex(elm => elm === domainName)
-        domain.splice(index, 1)
+        //Ask confirmation
+        if(confirm(`Attention, vous allez supprimer ${domainName} de votre pannier`)){
+
+            //Ajax request
+            ajaxSetup({action: "removeDomain", domain: domainName})
+
+            //Remove domainName to the global array
+            domain.splice(index, 1)
+
+            //Reset sytle of domain container if domain is empty
+            if(domain.length == 0){ document.getElementById("domainListContainer").style.display = "none" }
+
+        }
 
     }
+
+    //Remove domain in front
+    document.getElementById(domainName).remove()
 
 }
 
