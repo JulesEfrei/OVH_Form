@@ -80,120 +80,6 @@ function addElement(domainName, color) {
 
 }
 
-function addModalCore() {
-
-    for (let i = 1; i < document.getElementById("modal-body-container").children.length; i++) {
-        document.getElementById("modal-body-container").children[i].style.display = "block"
-    }
-
-    //DOMAIN
-    if (domain.length == 0) {
-
-        if(!document.getElementById("anything")) {
-
-            let rm = document.getElementById("modal-body")
-            while (rm.firstChild) { rm.removeChild(rm.firstChild); }
-
-            let selector = document.getElementById("modal-body")
-
-            let elm = document.createElement("li")
-            elm.id = "anything"
-            elm.innerHTML = "Aucun nom de domaine enregistré"
-
-            selector.appendChild(elm)
-        }
-
-    } else {
-
-        document.getElementById("lastConfirm").style.display = "block"
-        document.getElementById("modal-body-container").firstElementChild.innerHTML = "Vous êtes sur le point d’enregistrer les nom de domaines suivants :"
-
-        let selector = document.getElementById("modal-body")
-
-        while (selector.firstChild) { selector.removeChild(selector.firstChild); }
-        if(document.getElementById("anything")) {document.getElementById("anything").remove()}
-
-
-        domain.forEach(domain => {
-            let elm = document.createElement("li")
-            elm.innerHTML = domain
-
-            selector.appendChild(elm)
-        })
-
-    }
-
-    //USER
-    if (Object.keys(user).length == 0) {
-
-        if(!document.getElementById("anything-user")) {
-
-            let rm = document.getElementById("modal-user")
-            while (rm.firstChild) { rm.removeChild(rm.firstChild); }
-
-            let selector = document.getElementById("modal-body-container")
-
-            let elm = document.createElement("p")
-            elm.id = "anything-user"
-            elm.innerHTML = "Aucun propriétaire déclaré"
-
-            selector.appendChild(elm)
-        }
-
-    } else {
-
-        let selector = document.getElementById("modal-user")
-
-        while (selector.firstChild) { selector.removeChild(selector.firstChild); }
-        if(document.getElementById("anything-user")) {document.getElementById("anything-user").remove()}
-
-
-        Object.keys(user).forEach(field => {
-
-            if(field == "address") {
-
-                Object.keys(user["address"]).forEach(adressField => {
-
-                    let elm = document.createElement("li")
-                    elm.innerHTML = adressField + " : " + user[field][adressField]
-
-                    selector.appendChild(elm)
-
-                })
-
-            } else {
-
-                let elm = document.createElement("li")
-                elm.innerHTML = field + " : " + user[field]
-
-                selector.appendChild(elm)
-
-            }
-        })
-
-    }
-
-}
-
-
-
-//Empty form modal
-function emptyForm() {
-    document.getElementById("modal-body-container").firstElementChild.innerHTML = "Le formulaire n'a pas été remplis correctement."
-
-    for (let i = 1; i < document.getElementById("modal-body-container").children.length; i++) {
-        document.getElementById("modal-body-container").children[i].style.display = "none"
-    }
-
-}
-
-
-
-//Disable Send button
-function disable() {
-    document.getElementById("lastConfirm").style.display = "none"
-}
-
 
 
 function addDevModalCore(cartId, contactId) {
@@ -209,5 +95,162 @@ function addDevModalCore(cartId, contactId) {
 
     selector.appendChild(cart)
     selector.appendChild(contact)
+
+}
+
+
+//Modal Core Object
+class ModalCore {
+
+    constructor() {
+
+        this.modalContainer = document.getElementById("modal-body-container")
+
+        ModalCore.removeOldModal()
+
+        let firstText = document.createElement("p")
+        let secondText = document.createElement("p")
+        let firstList = document.createElement("ul")
+        let secondList = document.createElement("ul")
+
+        firstText.id = "firstText"
+        secondText.id = "secondText"
+        firstList.id = "firstList"
+        secondList.id = "secondList"
+
+        this.modalContainer.appendChild(firstText)
+        this.modalContainer.appendChild(firstList)
+        this.modalContainer.appendChild(secondText)
+        this.modalContainer.appendChild(secondList)
+
+    }
+
+    static removeOldModal() {
+
+        this.modalContainer = document.getElementById("modal-body-container")
+
+        if(this.modalContainer.children.length != 0) {
+
+            while (this.modalContainer.firstChild) { this.modalContainer.removeChild(this.modalContainer.firstChild); }
+
+        }
+
+    }
+
+    static invalidForm() {
+
+        ModalCore.removeOldModal()
+
+        let firstText = document.createElement("p")
+        firstText.id = "firstText"
+        this.modalContainer.appendChild(firstText)
+
+        document.getElementById("firstText").innerHTML = "Le formulaire n'a pas été remplis correctement."
+        this.disableValidation()
+
+    }
+
+    static disableValidation() {
+
+        document.getElementById("lastConfirm").style.display = "none";
+
+    }
+
+    static enableValidation() {
+
+        document.getElementById("lastConfirm").style.display = "block";
+
+    }
+
+    static render(user, domainList) {
+        let domainCore = new DomainCore(domainList)
+        let userCore = new UserCore(user)
+
+        domainCore.render()
+        userCore.render()
+    }
+
+}
+
+class DomainCore {
+
+    constructor(domainList) {
+        this.domain = domainList
+
+        document.getElementById("firstText").innerText = "Vous êtes sur le point d’enregistrer les nom de domaines suivants :"
+
+    }
+
+    render() {
+
+        if(domain.length != 0) {
+
+            this.showDomain()
+
+        } else {
+
+            this.showNoDomain()
+            ModalCore.disableValidation()
+
+        }
+
+    }
+
+    showDomain() {
+
+        domain.forEach(domain => {
+            let elm = document.createElement("li")
+            elm.innerHTML = domain
+
+            document.getElementById("firstList").appendChild(elm)
+        })
+
+    }
+
+    showNoDomain() {
+
+        document.getElementById("firstList").innerHTML = "<li>Aucun nom de domaine</li>"
+
+    }
+
+}
+
+class UserCore {
+
+    constructor(user) {
+        this.user = user
+
+        document.getElementById("secondText").innerHTML = "Propriétaire déclaré :"
+
+    }
+
+    render() {
+
+        let selector = document.getElementById("secondList")
+
+        Object.keys(this.user).forEach(field => {
+
+            if(field == "address") {
+
+                Object.keys(this.user["address"]).forEach(adressField => {
+
+                    let elm = document.createElement("li")
+                    elm.innerHTML = adressField + " : " + this.user[field][adressField]
+
+                    selector.appendChild(elm)
+
+                })
+
+            } else {
+
+                let elm = document.createElement("li")
+                elm.innerHTML = field + " : " + this.user[field]
+
+                selector.appendChild(elm)
+
+            }
+        })
+
+    }
 
 }

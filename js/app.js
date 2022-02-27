@@ -14,7 +14,7 @@ function ajaxSetup(content) {
         type: 'POST',
         success: function(data) {
 
-            // If domain is not available
+            // Call Front function according to the response code
             switch (data[data.length - 1]) {
                 case "1":
                     buildPopup("Nom de domaine indisponible.", true)
@@ -146,17 +146,22 @@ function deleteDomain(domainName) {
 }
 
 
-// If form already send
+// Call verification function according to the selected form
 function witchForm() {
 
     if(document.getElementById("name").value != "" && document.getElementById("last_name").value != "") {
+
         getFormData("customer-form")
+
     } else if(document.getElementById("nameB").value != "" && document.getElementById("last_nameB").value != "") {
+
         getFormData("business-form")
+
     } else {
+
         buildPopup("Veuillez remplir le formulaire", true)
-        emptyForm()
-        disable()
+        ModalCore.invalidForm()
+
     }
 
 }
@@ -164,15 +169,13 @@ function witchForm() {
 
 
 // Get data from form
-
 function getFormData(id) {
 
     // If the form is not correctly completed
     if(document.getElementById(id).checkValidity() == false) {
 
         buildPopup("Veillez remplir le formulaire correctement", true)
-        emptyForm()
-        disable()
+        ModalCore.invalidForm()
 
     } else {
 
@@ -205,10 +208,7 @@ function getFormData(id) {
             if(user.legalForm == "1") {
 
                 buildPopup("Type de compte incorrect", true)
-                emptyForm()
-                disable()
-
-                return "ERROR"
+                ModalCore.invalidForm()
 
             }
 
@@ -220,11 +220,12 @@ function getFormData(id) {
 
         if(select(id) == true) {
 
-            addModalCore()
+            let modal = new ModalCore()
+            ModalCore.enableValidation()
+            ModalCore.render(user, domain)
 
         } else {
-            emptyForm()
-            disable()
+           ModalCore.invalidForm()
         }
 
 
