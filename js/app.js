@@ -55,7 +55,7 @@ window.onload = () => {
 
 
 
-//Press Enter to send domainName
+//Press Enter to send domainName (Input Domain)
 document.getElementById("domain").addEventListener("keyup", (e) => {
     if(document.getElementById("domain").value != "" && e.code == "Enter") {
         addToCart()
@@ -65,7 +65,6 @@ document.getElementById("domain").addEventListener("keyup", (e) => {
 
 
 // Add domain to global array
-
 function addToCart() {
 
     //Get form
@@ -96,7 +95,6 @@ function addToCart() {
 
 
 // Test If string is domain
-
 function isDomain(string) {
 
     const regex = /^(((?!\-))(xn\-\-)?[a-z0-9\-_]{0,61}[a-z0-9]{1,1}\.)*(xn\-\-)?([a-z0-9\-]{1,61}|[a-z0-9\-]{1,30})\.[a-z]{2,}$/;
@@ -113,6 +111,9 @@ function isDomain(string) {
 
 }
 
+
+
+//Delete domain on back & front
 function deleteDomain(domainName) {
 
     let index = domain.findIndex(elm => elm === domainName)
@@ -121,7 +122,7 @@ function deleteDomain(domainName) {
     if(index != -1) {
 
         //Ask confirmation
-        if(confirm(`Attention, vous allez supprimer ${domainName} de votre pannier`)){
+        if(confirm(`Attention, vous allez supprimer ${domainName} de votre liste`)){
 
             //Ajax request
             ajaxSetup({action: "removeDomain", domain: domainName})
@@ -236,7 +237,6 @@ function getFormData(id) {
 
 
 //Get Select input
-
 function select(id) {
 
     if(id == "business-form") {
@@ -272,7 +272,6 @@ function select(id) {
 
 
 //Order function
-
 function order() {
 
     let verif = true

@@ -2,7 +2,7 @@
 
 function buildPopup(elm, is_error) {
 
-    let div_class = ["alert", "position-fixed", "w-auto", "top-0", "end-0", "mt-4", "me-4", "popanim"];
+    let div_class = ["alert", "position-fixed", "w-auto", "top-0", "start-0", "mt-4", "ms-4", "popanim"];
     let p_class = "mb-0"
 
     if(is_error == true) {
@@ -43,8 +43,8 @@ function popupAnimation() {
 
     let tl = gsap.timeline()
 
-    tl.from('.popanim', {opacity: 0, duration: .7, x: 300, })
-        .to('.popanim', {delay: 3, duration: .7, x: 300, opacity: 0})
+    tl.from('.popanim', {opacity: 0, duration: .7, x: -300, })
+        .to('.popanim', {delay: 3, duration: .7, x: -300, opacity: 0})
 
 
     //Reset all popanim container
@@ -191,6 +191,7 @@ class DomainCore {
 
             this.showNoDomain()
             ModalCore.disableValidation()
+            buildPopup("Aucun nom de domaine enregistré", true)
 
         }
 
