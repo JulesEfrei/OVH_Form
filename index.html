@@ -65,6 +65,7 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-customer-tab" data-bs-toggle="tab" data-bs-target="#nav-customer" type="button" role="tab" aria-controls="nav-customer" aria-selected="true">Particulier</button>
             <button class="nav-link" id="nav-business-tab" data-bs-toggle="tab" data-bs-target="#nav-business" type="button" role="tab" aria-controls="nav-business" aria-selected="true">Entreprise</button>
+            <button class="nav-link" id="nav-association-tab" data-bs-toggle="tab" data-bs-target="#nav-association" type="button" role="tab" aria-controls="nav-association" aria-selected="true">Association</button>
         </div>
 
         <!-- Form content -->
@@ -141,8 +142,6 @@
                         </select>
                     </div>
 
-<!--                    <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('customer-form')">Valider les informations saisies</button>-->
-
                 </form>
             </div>
 
@@ -194,18 +193,9 @@
                         </div>
                     </div>
 
-                    <!-- LegalForm OrganisationName -->
-                    <div class="row my-3">
-                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
-                            <select class="form-select" name="legalForm" required id="select">
-                                <option selected value="1">Type de compte</option>
-                                <option value="corporation">Entreprise</option>
-                                <option value="association">Association</option>
-                            </select>
-                        </div>
-                        <div class="col-xl-3 col-md-6 px-0 pe-md-3 pe-0">
-                            <input class="form-control mb-4" type="text" name="organisationName" id="organisationName" placeholder="Nom de l'organisation" data-obj="1">
-                        </div>
+                    <!-- OrganisationName -->
+                    <div class="row col-md-6 ps-0 pe-md-1 pe-0">
+                        <input class="form-control mb-4" type="text" name="organisationName" id="organisationNameC" placeholder="Nom de l'organisation" data-obj="1">
                     </div>
 
                     <!-- Adress -->
@@ -231,7 +221,84 @@
                         </select>
                     </div>
 
-<!--                    <button class="btn btn-outline-primary mt-4 row align-self-center" type="button" onclick="ifData('business-form')">Valider les informations saisies</button>-->
+                </form>
+            </div>
+
+            <!-- Content Association form -->
+            <div class="tab-pane fade" id="nav-association" role="tabpanel" aria-labelledby="nav-association-tab">
+                <!-- Form -->
+                <form class="w-100 container mt-4" id="association-form">
+
+                    <!-- Name LastName -->
+                    <div class="row mb-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="text" name="firstName" id="nameC" placeholder="Prénom" required="required" data-obj="1">
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0 pe-md-3 pe-0">
+                            <input class="form-control" type="text" name="lastName" id="last_nameC" placeholder="Nom" required="required" data-obj="1">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="row col-md-6 ps-0 pe-md-1 pe-0">
+                        <input class="form-control" type="email" name="email" id="emailC" placeholder="E-mail" required="required" data-obj="1">
+                    </div>
+
+                    <!-- Language Phone -->
+                    <div class="row my-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <select class="form-select mb-4" name="language" required id="selectLangC" data-obj="1">
+                                <option selected value="1">Langue</option>
+                                <option value="de_DE">Allemand</option>
+                                <option value="en_GB">Anglais</option>
+                                <option value="en_AU">Anglais (Australie)</option>
+                                <option value="en_CA">Anglais (Canada)</option>
+                                <option value="en_US">Anglais (Etats-Unis)</option>
+                                <option value="en_IE">Anglais (Irlande)</option>
+                                <option value="es_ES">Espagnol</option>
+                                <option value="fr_FR">Français</option>
+                                <option value="fr_CA">Français (Canada)</option>
+                                <option value="fr_MA">Français (Maroc)</option>
+                                <option value="fr_SN">Français (Sénégal)</option>
+                                <option value="fr_TN">Français (Tunisie)</option>
+                                <option value="it_IT">Italien</option>
+                                <option value="nl_NL">Néerlandais</option>
+                                <option value="pl_PL">Polonais</option>
+                                <option value="pt_PT">Portugais</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0 pe-md-3 pe-0">
+                            <input class="form-control mb-4" type="tel" name="phone" id="phoneC" placeholder="Numéro de téléphone" required data-obj="1">
+                        </div>
+                    </div>
+
+                    <!-- OrganisationName -->
+                    <div class="row col-md-6 ps-0 pe-md-1 pe-0">
+                        <input class="form-control mb-4" type="text" name="organisationName" id="organisationNameC" placeholder="Nom de l'organisation" data-obj="1">
+                    </div>
+
+                    <!-- Adress -->
+                    <div class="row col-md-6 ps-0 pe-md-1 pe-0">
+                        <input class="form-control" type="text" name="line1" id="adressC" placeholder="Adresse" required="required" data-obj="2">
+                    </div>
+
+                    <!-- Zip City -->
+                    <div class="row my-3">
+                        <div class="col-xl-3 col-md-6 ps-0 pe-md-3 pe-0 mb-md-0 mb-3">
+                            <input class="form-control" type="text" name="zip" id="zipC" placeholder="Code Postal" required="required" data-obj="2">
+                        </div>
+                        <div class="col-xl-3 col-md-6 px-0 pe-md-3 pe-0">
+                            <input class="form-control" type="text" name="city" id="cityC" placeholder="Ville" required="required" data-obj="2">
+                        </div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="row col-md-6 ps-0 pe-md-1 pe-0">
+                        <select class="form-select" name="country" required id="selectCountryC" data-obj="2">
+                            <option selected value="1">Pays</option>
+                            <option value="AF">Afghanistan</option><option value="ZA">Afrique Du Sud</option><option value="AX">Åland, Îles</option><option value="AL">Albanie</option><option value="DZ">Algérie</option><option value="DE">Allemagne</option><option value="AD">Andorre</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctique</option><option value="AG">Antigua-Et-Barbuda</option><option value="SA">Arabie Saoudite</option><option value="AR">Argentine</option><option value="AM">Arménie</option><option value="AW">Aruba</option><option value="AU">Australie</option><option value="AT">Autriche</option><option value="AZ">Azerbaïdjan</option><option value="BS">Bahamas</option><option value="BH">Bahreïn</option><option value="BD">Bangladesh</option><option value="BB">Barbade</option><option value="BE">Belgique</option><option value="BZ">Belize</option><option value="BJ">Bénin</option><option value="BM">Bermudes</option><option value="BT">Bhoutan</option><option value="BO">Bolivie</option><option value="BA">Bosnie-Herzégovine</option><option value="BW">Botswana</option><option value="BR">Brésil</option><option value="BN">Brunéi Darussalam</option><option value="BG">Bulgarie</option><option value="BF">Burkina Faso</option><option value="KY">Caïmanes, Îles</option><option value="KH">Cambodge</option><option value="CM">Cameroun</option><option value="CA">Canada</option><option value="CV">Cap-Vert</option><option value="EA">Ceuta</option><option value="CL">Chili</option><option value="CX">Christmas, Île</option><option value="CY">Chypre</option><option value="CC">Cocos (Keeling), Îles</option><option value="CO">Colombie</option><option value="KM">Comores</option><option value="CG">Congo</option><option value="CK">Cook, Îles</option><option value="KR">Corée, République De</option><option value="CR">Costa Rica</option><option value="CI">Côte D'Ivoire</option><option value="HR">Croatie</option><option value="CW">Curaçao</option><option value="DK">Danemark</option><option value="DG">Diego Garcia</option><option value="DJ">Djibouti</option><option value="DO">Dominicaine, République</option><option value="DM">Dominique</option><option value="EG">Égypte</option><option value="SV">El Salvador</option><option value="AE">Émirats Arabes Unis</option><option value="EC">Équateur</option><option value="ER">Érythrée</option><option value="ES">Espagne</option><option value="EE">Estonie</option><option value="ET">Éthiopie</option><option value="FK">Falkland, Îles (Malvinas)</option><option value="FO">Féroé, Îles</option><option value="FJ">Fidji</option><option value="FI">Finlande</option><option value="FR">France</option><option value="GA">Gabon</option><option value="GM">Gambie</option><option value="GE">Géorgie</option><option value="GS">Géorgie Du Sud et Les Îles Sandwich Du Sud</option><option label="Ghana" value="GH">Ghana</option><option label="Gibraltar" value="GI">Gibraltar</option><option label="Grèce" value="GR">Grèce</option><option label="Grenade" value="GD">Grenade</option><option label="Groenland" value="GL">Groenland</option><option label="Guadeloupe" value="GP">Guadeloupe</option><option label="Guatemala" value="GT">Guatemala</option><option label="Guernesey" value="GG">Guernesey</option><option label="Guinée" value="GN">Guinée</option><option label="Guinée Équatoriale" value="GQ">Guinée Équatoriale</option><option label="Guinée-Bissau" value="GW">Guinée-Bissau</option><option label="Guyana" value="GY">Guyana</option><option label="Guyane Française" value="GF">Guyane Française</option><option label="Haïti" value="HT">Haïti</option><option label="Honduras" value="HN">Honduras</option><option label="Hong-Kong" value="HK">Hong-Kong</option><option label="Hongrie" value="HU">Hongrie</option><option label="Île de l'Ascension" value="AC">Île de l'Ascension</option><option label="Ile de Man" value="IM">Ile de Man</option><option label="Îles Canaries" value="IC">Îles Canaries</option><option label="Îles Vierges Britanniques" value="VG">Îles Vierges Britanniques</option><option label="Inde" value="IN">Inde</option><option label="Indonésie" value="ID">Indonésie</option><option label="Irlande" value="IE">Irlande</option><option label="Islande" value="IS">Islande</option><option label="Israël" value="IL">Israël</option><option label="Italie" value="IT">Italie</option><option label="Jamaïque" value="JM">Jamaïque</option><option label="Japon" value="JP">Japon</option><option label="Jersey" value="JE">Jersey</option><option label="Jordanie" value="JO">Jordanie</option><option label="Kazakhstan" value="KZ">Kazakhstan</option><option label="Kenya" value="KE">Kenya</option><option label="Kirghizistan" value="KG">Kirghizistan</option><option label="Kiribati" value="KI">Kiribati</option><option label="Koweït" value="KW">Koweït</option><option label="Laos, République Démocratique Populaire" value="LA">Laos, République Démocratique Populaire</option><option label="Lesotho" value="LS">Lesotho</option><option label="Lettonie" value="LV">Lettonie</option><option label="Liechtenstein" value="LI">Liechtenstein</option><option label="Lituanie" value="LT">Lituanie</option><option label="Luxembourg" value="LU">Luxembourg</option><option label="Macao" value="MO">Macao</option><option label="Macédoine" value="MK">Macédoine</option><option label="Madagascar" value="MG">Madagascar</option><option label="Malaisie" value="MY">Malaisie</option><option label="Malawi" value="MW">Malawi</option><option label="Maldives" value="MV">Maldives</option><option label="Mali" value="ML">Mali</option><option label="Malte" value="MT">Malte</option><option label="Maroc" value="MA">Maroc</option><option label="Marshall, Îles" value="MH">Marshall, Îles</option><option label="Martinique" value="MQ">Martinique</option><option label="Mauritanie" value="MR">Mauritanie</option><option label="Mayotte" value="YT">Mayotte</option><option label="Mexique" value="MX">Mexique</option><option label="Micronésie, États Fédérés De" value="FM">Micronésie, États Fédérés De</option><option label="Moldavie" value="MD">Moldavie</option><option label="Monaco" value="MC">Monaco</option><option label="Mongolie" value="MN">Mongolie</option><option label="Monténégro" value="ME">Monténégro</option><option label="Montserrat" value="MS">Montserrat</option><option label="Mozambique" value="MZ">Mozambique</option><option label="Namibie" value="NA">Namibie</option><option label="Nauru" value="NR">Nauru</option><option label="Népal" value="NP">Népal</option><option label="Nicaragua" value="NI">Nicaragua</option><option label="Niger" value="NE">Niger</option><option label="Nigéria" value="NG">Nigéria</option><option label="Niué" value="NU">Niué</option><option label="Norfolk, Île" value="NF">Norfolk, Île</option><option label="Norvège" value="NO">Norvège</option><option label="Nouvelle-Calédonie" value="NC">Nouvelle-Calédonie</option><option label="Nouvelle-Zélande" value="NZ">Nouvelle-Zélande</option><option label="Océan Indien, Territoire Britannique De L'" value="IO">Océan Indien, Territoire Britannique De L'</option><option label="Oman" value="OM">Oman</option><option label="Ouganda" value="UG">Ouganda</option><option label="Ouzbékistan" value="UZ">Ouzbékistan</option><option label="Pakistan" value="PK">Pakistan</option><option label="Palaos" value="PW">Palaos</option><option label="Panama" value="PA">Panama</option><option label="Papouasie-Nouvelle-Guinée" value="PG">Papouasie-Nouvelle-Guinée</option><option label="Paraguay" value="PY">Paraguay</option><option label="Pays-Bas" value="NL">Pays-Bas</option><option label="Pays-Bas caribéens" value="BQ">Pays-Bas caribéens</option><option label="Pérou" value="PE">Pérou</option><option label="Philippines" value="PH">Philippines</option><option label="Pitcairn" value="PN">Pitcairn</option><option label="Pologne" value="PL">Pologne</option><option label="Polynésie Française" value="PF">Polynésie Française</option><option label="Portugal" value="PT">Portugal</option><option label="Qatar" value="QA">Qatar</option><option label="République de Maurice" value="MU">République de Maurice</option><option label="République de Serbie (Anciennement Serbie et Monténégro code cs)" value="RS">République de Serbie (Anciennement Serbie et Monténégro code cs)</option><option label="République du Kosovo" value="XK">République du Kosovo</option><option label="République tchèque" value="CZ">République tchèque</option><option label="Réunion, Île" value="RE">Réunion, Île</option><option label="Roumanie" value="RO">Roumanie</option><option label="Royaume-Uni" value="GB">Royaume-Uni</option><option label="Russie" value="RU">Russie</option><option label="Rwanda" value="RW">Rwanda</option><option label="Sahara Occidental" value="EH">Sahara Occidental</option><option label="Saint Barthélemy" value="BL">Saint Barthélemy</option><option label="Saint Martin (French part)" value="MF">Saint Martin (French part)</option><option label="Saint-Kitts-Et-Nevis" value="KN">Saint-Kitts-Et-Nevis</option><option label="Saint-Marin" value="SM">Saint-Marin</option><option label="Saint-Martin (Royaume des Pays-Bas)" value="SX">Saint-Martin (Royaume des Pays-Bas)</option><option label="Saint-Pierre-Et-Miquelon" value="PM">Saint-Pierre-Et-Miquelon</option><option label="Saint-Vincent-Et-Les Grenadines" value="VC">Saint-Vincent-Et-Les Grenadines</option><option label="Sainte-Hélène" value="SH">Sainte-Hélène</option><option label="Sainte-Lucie" value="LC">Sainte-Lucie</option><option label="Salomon, Îles" value="SB">Salomon, Îles</option><option label="Samoa" value="WS">Samoa</option><option label="Sao Tomé-Et-Principe" value="ST">Sao Tomé-Et-Principe</option><option label="Sénégal" value="SN">Sénégal</option><option label="Seychelles" value="SC">Seychelles</option><option label="Sierra Leone" value="SL">Sierra Leone</option><option label="Singapour" value="SG">Singapour</option><option label="Slovaquie" value="SK">Slovaquie</option><option label="Slovénie" value="SI">Slovénie</option><option label="Sri Lanka" value="LK">Sri Lanka</option><option label="Suède" value="SE">Suède</option><option label="Suisse" value="CH">Suisse</option><option label="Suriname" value="SR">Suriname</option><option label="Svalbard Et Île Jan Mayen" value="SJ">Svalbard Et Île Jan Mayen</option><option label="Swaziland" value="SZ">Swaziland</option><option label="Tadjikistan" value="TJ">Tadjikistan</option><option label="Taïwan, République de Chine" value="TW">Taïwan, République de Chine</option><option label="Tanzanie, République-Unie De" value="TZ">Tanzanie, République-Unie De</option><option label="Tchad" value="TD">Tchad</option><option label="Terres Australes Françaises" value="TF">Terres Australes Françaises</option><option label="Territoires palestiniens occupés" value="PS">Territoires palestiniens occupés</option><option label="Thaïlande" value="TH">Thaïlande</option><option label="Timor oriental" value="TL">Timor oriental</option><option label="Togo" value="TG">Togo</option><option label="Tokelau" value="TK">Tokelau</option><option label="Tonga" value="TO">Tonga</option><option label="Trinité-Et-Tobago" value="TT">Trinité-Et-Tobago</option><option label="Tristan da Cunha (archipel)" value="TA">Tristan da Cunha (archipel)</option><option label="Tunisie" value="TN">Tunisie</option><option label="Turkménistan" value="TM">Turkménistan</option><option label="Turks Et Caïques, Îles" value="TC">Turks Et Caïques, Îles</option><option label="Turquie" value="TR">Turquie</option><option label="Tuvalu" value="TV">Tuvalu</option><option label="Ukraine" value="UA">Ukraine</option><option label="Uruguay" value="UY">Uruguay</option><option label="Vanuatu" value="VU">Vanuatu</option><option label="Vatican" value="VA">Vatican</option><option label="Viet Nam" value="VN">Viet Nam</option><option label="Wallis Et Futuna" value="WF">Wallis Et Futuna</option><option label="Zambie" value="ZM">Zambie</option>
+                        </select>
+                    </div>
 
                 </form>
             </div>

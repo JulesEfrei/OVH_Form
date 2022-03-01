@@ -158,6 +158,10 @@ function witchForm() {
 
         getFormData("business-form")
 
+    } else if(document.getElementById("nameC").value != "" && document.getElementById("last_nameC").value != "") {
+
+        getFormData("association-form")
+
     } else {
 
         buildPopup("Veuillez remplir le formulaire", true)
@@ -202,16 +206,11 @@ function getFormData(id) {
         //Get Type of account
         if(id == "business-form") {
 
-            let select = document.getElementById("select").value;
+            user["legalForm"] = "corporation"
 
-            user["legalForm"] = select
+        } else if(id == "association-form") {
 
-            if(user.legalForm == "1") {
-
-                buildPopup("Type de compte incorrect", true)
-                ModalCore.invalidForm()
-
-            }
+            user["legalForm"] = "association"
 
         } else { //Set default value
 
@@ -243,6 +242,11 @@ function select(id) {
 
         var language = document.getElementById("selectLangB")
         var country = document.getElementById("selectCountryB")
+
+    } else if(id == "association-form") {
+
+        var language = document.getElementById("selectLangC")
+        var country = document.getElementById("selectCountryC")
 
     } else {
 
